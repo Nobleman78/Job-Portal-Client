@@ -21,7 +21,7 @@ const Navbar = () => {
         })
     }
     return (
-        <div className='flex justify-between items-center py-5 font-medium sticky top-0 bg-white z-50 '>
+        <div className='flex justify-between items-center py-5 font-medium sticky top-0 w-full shadow-md bg-white z-50 '>
             <div className='flex items-center justify-center'>
                 <RiMenu2Line onClick={() => setOpen(!open)} className='md:hidden' />
                 <Link to='/'><img className='lg:w-50 w-40 h-8 lg:h-12' src={logo} alt="Logo" /></Link>

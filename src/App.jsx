@@ -14,7 +14,7 @@ import Footer from './Pages/Footer'
 function App() {
   return (
 
-    <div className='sm:max-w-7xl mx-auto px-2'>
+    <div>
       <Navbar />
       <Routes>
         <Route path='*' element={<NotFound />}></Route>

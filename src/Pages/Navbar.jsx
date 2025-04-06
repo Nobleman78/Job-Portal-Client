@@ -23,7 +23,7 @@ const Navbar = () => {
     return (
         <div className='flex justify-between items-center py-5 font-medium'>
             <div className='flex items-center justify-center'>
-                <RiMenu2Line onClick={() => setVisible(true)} className='lg:hidden' />
+                <RiMenu2Line onClick={() => setVisible(true)} className='md:hidden' />
                 <Link to='/'><img className='lg:w-50 w-40 h-8 lg:h-12' src={logo} alt="Logo" /></Link>
             </div>
             <ul className='hidden sm:flex gap-5 text-sm '>

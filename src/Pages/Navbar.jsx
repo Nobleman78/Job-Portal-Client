@@ -13,6 +13,7 @@ const Navbar = () => {
     const { user,signOutUser } = useContext(AuthContext);
     const [showUserInfo, setShowUserInfo] = useState(false);
     const [menu, setMenu] = useState('menu')
+    const [openProfile, setOpenProfile] = useState(false);
     const [open,setOpen] = useState(false);
     const handleSignOut = () =>{
         signOutUser()
@@ -52,7 +53,7 @@ const Navbar = () => {
             <ul className='flex items-center justify-between gap-3 relative'>
                 <NavLink to='/registration' className='bg-blue-600 px-4 py-1 hidden  rounded-full text-white'>Register</NavLink>
                 {
-                    user ? <span onClick={() => {setShowUserInfo(!showUserInfo);setOpen(true)}} className='relative w-8 h-8 rounded-full bg-gray-200 cursor-pointer'>
+                    user ? <span onClick={() => {setShowUserInfo(!showUserInfo);setOpenProfile(true)}} className='relative w-8 h-8 rounded-full bg-gray-200 cursor-pointer'>
                         <p className='absolute  top-1 right-3'>{user.email.slice(0, 1).toUpperCase()}</p>
                     </span> :
                         <NavLink to='/login' className='bg-blue-600 px-4 py-1 rounded-full text-white'>
@@ -60,12 +61,12 @@ const Navbar = () => {
                         </NavLink>
                 }
                 {
-                    showUserInfo && open &&
+                    showUserInfo && openProfile &&
                     <div className='w-70 h-40 shadow-2xl absolute top-10 right-0 border-t-4 border-green-600 '>
                         <ul className='flex flex-col items-start px-5 gap-5 py-3 cursor-pointer'>
-                            <li onClick={()=>setOpen(false)} className='flex items-center  gap-5'><FaUser/>My Profile</li>
-                            <li onClick={()=>setOpen(false)} className='flex items-center gap-5'><MdModeEditOutline/>Edit Profile</li>
-                            <li onClick={()=>{setOpen(false);handleSignOut()}} className='flex items-center gap-4'><IoLogOutOutline className='text-xl'/>Log Out</li> 
+                            <li onClick={()=>setOpenProfile(false)} className='flex items-center  gap-5'><FaUser/>My Profile</li>
+                            <li onClick={()=>setOpenProfile(false)} className='flex items-center gap-5'><MdModeEditOutline/>Edit Profile</li>
+                            <li onClick={()=>{setOpenProfile(false);handleSignOut()}} className='flex items-center gap-4'><IoLogOutOutline className='text-xl'/>Log Out</li> 
                         </ul>
                     </div>
                 }

@@ -62,7 +62,7 @@ const Navbar = () => {
                 }
                 {
                     showUserInfo && openProfile &&
-                    <div className='w-70 h-40 shadow-2xl absolute top-10 right-0 border-t-4 border-green-600 '>
+                    <div className='w-70 h-40 shadow-2xl absolute bg-white top-10 right-0 border-t-4 border-green-600 z-20  '>
                         <ul className='flex flex-col items-start px-5 gap-5 py-3 cursor-pointer'>
                             <li onClick={()=>setOpenProfile(false)} className='flex items-center  gap-5'><FaUser/>My Profile</li>
                             <li onClick={()=>setOpenProfile(false)} className='flex items-center gap-5'><MdModeEditOutline/>Edit Profile</li>

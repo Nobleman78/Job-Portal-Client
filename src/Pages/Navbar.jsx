@@ -6,12 +6,12 @@ import AuthContext from '../Context/Authcontext';
 import { FaUser } from "react-icons/fa";
 import { IoLogOutOutline } from "react-icons/io5";
 import { MdModeEditOutline } from "react-icons/md";
+import { RxCross2 } from "react-icons/rx";
 
 
 const Navbar = () => {
     const { user,signOutUser } = useContext(AuthContext);
     const [showUserInfo, setShowUserInfo] = useState(false);
-    const [visible, setVisible] = useState(false);
     const [menu, setMenu] = useState('menu')
     const [open,setOpen] = useState(false);
     const handleSignOut = () =>{
@@ -21,9 +21,9 @@ const Navbar = () => {
         })
     }
     return (
-        <div className='flex justify-between items-center py-5 font-medium'>
+        <div className='flex justify-between items-center py-5 font-medium sticky top-0 bg-white z-50 '>
             <div className='flex items-center justify-center'>
-                <RiMenu2Line onClick={() => setVisible(true)} className='md:hidden' />
+                <RiMenu2Line onClick={() => setOpen(!open)} className='md:hidden' />
                 <Link to='/'><img className='lg:w-50 w-40 h-8 lg:h-12' src={logo} alt="Logo" /></Link>
             </div>
             <ul className='hidden sm:flex gap-5 text-sm '>
@@ -70,19 +70,20 @@ const Navbar = () => {
                     </div>
                 }
             </ul>
+            
 
             {/* {Sidebar Menu for small screen} */}
-            <div className={` absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full z-10' : 'w-0'}`}>
+            <div className={`md:hidden fixed w-100 inset-0 bg-white z-40 transition-all duration-300 ease-in-out transform ${open ? 'translate-x-0' : '-translate-x-full'}`}>
                 <div className='flex flex-col text-gray-600'>
-                    <div onClick={() => setVisible(false)} className='flex items-center gap-4 p-3'>
-                        <p>Back</p>
+                    <div onClick={() => setOpen(false)} className='flex items-center gap-4 p-3'>
+                        <p><RxCross2 className='text-lg'/></p>
                     </div>
-                    <NavLink onClick={() => { setMenu('HOME'), setVisible(false) }} className={menu === 'HOME' ? 'py-2  bg-black pl-6 border  cursor-pointer text-white' : 'py-2  pl-6 border  cursor-pointer'} to='/'>HOME</NavLink>
-                    <NavLink onClick={() => { setMenu('FIND JOB'), setVisible(false) }} className={menu === 'FIND JOB' ? ' bg-black text-white py-2 pl-6 border-b cursor-pointer' : 'py-2  pl-6 border-b cursor-pointer'} to='/findjob'>FIND JOB</NavLink>
-                    <NavLink onClick={() => { setMenu('REQRUITER'), setVisible(false) }} className={menu === 'REQRUITER' ? 'bg-black  text-white border-b py-2 cursor-pointer pl-6 ' : 'py-2 pl-6 border-b cursor-pointer'} to='/recruiter'>REQRUITER</NavLink>
-                    <NavLink onClick={() => { setMenu('CANDIDATES'), setVisible(false) }} className={menu === 'CANDIDATES' ? 'py-2 pl-6 border-b cursor-pointer bg-black text-white' : 'py-2 pl-6 border-b cursor-pointer'} to='/candidate'>CANDIDATES</NavLink>
-                    <NavLink onClick={() => { setMenu('CONTACT'), setVisible(false) }} className={menu === 'CONTACT' ? 'py-2 pl-6 border-b cursor-pointer bg-black text-white' : 'py-2 pl-6 border-b cursor-pointer'} to='/contact'>CONTACT</NavLink>
-                    <NavLink onClick={() => { setMenu('LOGIN'), setVisible(false) }} className={menu === 'LOGIN' ? 'py-2 pl-6 border-b cursor-pointer bg-black text-white' : 'py-2 pl-6 border-b cursor-pointer'} to='/login'>LOGIN</NavLink>
+                    <NavLink onClick={() => { setMenu('HOME'), setOpen(false) }} className={menu === 'HOME' ? 'py-2  bg-black pl-6 border  cursor-pointer text-white' : 'py-2  pl-6 border  cursor-pointer'} to='/'>HOME</NavLink>
+                    <NavLink onClick={() => { setMenu('FIND JOB'), setOpen(false) }} className={menu === 'FIND JOB' ? ' bg-black text-white py-2 pl-6 border-b cursor-pointer' : 'py-2  pl-6 border-b cursor-pointer'} to='/findjob'>FIND JOB</NavLink>
+                    <NavLink onClick={() => { setMenu('REQRUITER'), setOpen(false) }} className={menu === 'REQRUITER' ? 'bg-black  text-white border-b py-2 cursor-pointer pl-6 ' : 'py-2 pl-6 border-b cursor-pointer'} to='/recruiter'>REQRUITER</NavLink>
+                    <NavLink onClick={() => { setMenu('CANDIDATES'), setOpen(false) }} className={menu === 'CANDIDATES' ? 'py-2 pl-6 border-b cursor-pointer bg-black text-white' : 'py-2 pl-6 border-b cursor-pointer'} to='/candidate'>CANDIDATES</NavLink>
+                    <NavLink onClick={() => { setMenu('CONTACT'), setOpen(false) }} className={menu === 'CONTACT' ? 'py-2 pl-6 border-b cursor-pointer bg-black text-white' : 'py-2 pl-6 border-b cursor-pointer'} to='/contact'>CONTACT</NavLink>
+                    <NavLink onClick={() => { setMenu('LOGIN'), setOpen(false) }} className={menu === 'LOGIN' ? 'py-2 pl-6 border-b cursor-pointer bg-black text-white' : 'py-2 pl-6 border-b cursor-pointer'} to='/login'>LOGIN</NavLink>
                 </div>
             </div>
         </div>

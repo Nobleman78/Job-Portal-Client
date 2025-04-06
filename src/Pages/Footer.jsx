@@ -6,7 +6,7 @@ import { FaLinkedin } from 'react-icons/fa6';
 const Footer = () => {
     return (
         <>
-            <div className='flex flex-col scroll-smooth lg:flex-row mt-20 gap-10 justify-start lg:justify-between'>
+            <div className='flex flex-col scroll-smooth md:flex-row mt-20  lg:gap-10 justify-start md:justify-between'>
                 <div className='lg:w-1/3 flex flex-col gap-4 text-gray-600'>
                     <img className='w-50' src={logo} alt="" />
                     <p>Call Us</p>
@@ -15,9 +15,9 @@ const Footer = () => {
                     <p> support@jobfinder.com </p>
 
                 </div>
-                <div className='w-2/3 flex flex-col lg:flex-row gap-5 justify-start lg:justify-between  '>
+                <div className='w-2/3 flex flex-col md:flex-row gap-3 lg:gap-5 justify-start lg:justify-between  '>
                     <div>
-                        <h2 className='font-semibold text-xl'>For Candidates</h2>
+                        <h2 className='font-semibold lg:text-xl'>For Candidates</h2>
                         <ul className='text-gray-600 flex flex-col cursor-pointer gap-4 mt-5'>
                             <li>Browse Job</li>
                             <li>Browse Categories</li>
@@ -28,7 +28,7 @@ const Footer = () => {
 
                     </div>
                     <div>
-                        <h2 className='font-semibold text-xl'>For Employers</h2>
+                        <h2 className='font-semibold lg:text-xl'>For Employers</h2>
                         <ul className='text-gray-600 cursor-pointer flex flex-col gap-4 mt-5'>
                             <li>Browse Candidates</li>
                             <li>Employee Dashboard</li>
@@ -38,7 +38,7 @@ const Footer = () => {
 
                     </div>
                     <div>
-                        <h2 className='font-semibold text-xl'>About Us</h2>
+                        <h2 className='font-semibold  lg:text-xl'>About Us</h2>
                         <ul className='text-gray-600 cursor-pointer flex flex-col gap-4 mt-5'>
                             <li>About Us</li>
                             <li>Blog</li>
@@ -49,7 +49,7 @@ const Footer = () => {
 
                     </div>
                     <div>
-                        <h2 className='font-semibold text-xl'>Helpful Resources</h2>
+                        <h2 className='font-semibold lg:text-xl'>Helpful Resources</h2>
                         <ul className='text-gray-600 cursor-pointer flex flex-col gap-4 mt-5'>
                             <li>Site Map</li>
                             <li>Tearms of Use</li>

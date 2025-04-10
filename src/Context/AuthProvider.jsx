@@ -36,6 +36,8 @@ const AuthProvider = ({ children }) => {
             unsubscribe();
         }
     })
+     
+    /*This is for filterering */
 
     const [input, setInput] = useState('');
     const [location, setLocation] = useState('');

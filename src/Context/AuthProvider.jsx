@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AuthContext from './Authcontext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { auth } from '../Utility/Firebase';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const AuthProvider = ({ children }) => {
@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider)
 
     }
-    const signOutUser = () =>{
+    const signOutUser = () => {
         setLoading(true);
         return signOut(auth)
     }
@@ -30,18 +30,46 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            console.log(currentUser)
             setLoading(false);
         })
         return () => {
             unsubscribe();
         }
     })
- 
+
+    const [input, setInput] = useState('');
+    const [location, setLocation] = useState('');
+    const [filterJobs, setFilterJobs] = useState([]);
+    const [jobs, setJobs] = useState([]);
+    const navigate = useNavigate();
+
+    const formHandler = (e) => {
+        e.preventDefault();
+        navigate('/findjob');
+        const tempdata = [...jobs];
+        const filterJob = tempdata.filter(job => {
+            const titleMatch = input ? job.title.toLowerCase().includes(input.toLowerCase()) : true;
+            const locationMatch = location ? job.location.toLowerCase().includes(location.toLowerCase()) : true;
+            return titleMatch && locationMatch;
+        });
+        setFilterJobs(filterJob);
+        setInput('')
+        setLocation('')
+
+
+    };
+
+    useEffect(() => {
+        fetch('http://localhost:3000/jobs')
+            .then(res => res.json())
+            .then(data => setJobs(data));
+    }, []);
+
+
 
     const value = {
         user, loading, createUser, signInWithEmailandPassword, loginWithGoogle,
-        signOutUser
+        signOutUser, setInput, setLocation, filterJobs, input, location, formHandler
 
     }
 

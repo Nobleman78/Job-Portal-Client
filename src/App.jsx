@@ -10,6 +10,7 @@ import Contact from './Pages/Contact'
 import Findjob from './Pages/Findjob'
 import Candidate from './Pages/Candidate'
 import Footer from './Pages/Footer'
+import JobDetailes from './components/JobDetailes'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path='*' element={<NotFound />}></Route>
         <Route path='/' element={<Home />}></Route>
+        <Route path='/jobs/:id' element={<JobDetailes/>}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/registration' element={<Registration />}></Route>
         <Route path='/recruiter' element={<Recruiter />}></Route>

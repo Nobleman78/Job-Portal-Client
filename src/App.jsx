@@ -11,6 +11,7 @@ import Findjob from './Pages/Findjob'
 import Candidate from './Pages/Candidate'
 import Footer from './Pages/Footer'
 import JobDetailes from './components/JobDetailes'
+import ApplyJob from './components/ApplyJob'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/contact' element={<Contact />}></Route>
         <Route path='/findjob' element={<Findjob />}></Route>
         <Route path='/candidate' element={<Candidate />}></Route>
+        <Route path='/applyJob/:id' element={<ApplyJob/>}></Route>
 
 
       </Routes>

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const JobDetails = () => {
     const [jobs, setJobs] = useState([]);
     const { id } = useParams();
-    const [seeMore,setSeeMore] = useState(false);
+    const [seeMore, setSeeMore] = useState(false);
 
     useEffect(() => {
         fetch(`http://localhost:3000/jobs`)
@@ -19,22 +19,26 @@ const JobDetails = () => {
         <div>
             {
                 job ?
-                    <div className='sm:max-w-7xl mx-auto px-2 mt-10 '>
+                    <div className='sm:max-w-7xl mx-auto px-2 mt-10  '>
                         <h2 className='text-xl font-semibold'>Job Details for {job.title}</h2>
                         <p className='text-'>Company : {job.company}</p>
                         <p>Location : {job.location} </p>
                         <p>Deadline : {job.applicationDeadline}</p>
-                        <button onClick={()=>setSeeMore(!seeMore)} className='hover:text-blue-500 cursor-pointer underline'>See More</button>
+                        <Link to={`/applyJob/${job._id}`}>
+                            <button className='bg-blue-500 px-4 py-1 rounded cursor-pointer text-white'>Apply Now</button>
+                        </Link>
+                        <button onClick={() => setSeeMore(!seeMore)} className='ms-2 hover:text-blue-500 cursor-pointer underline'>See More</button>
                         {
                             seeMore && <div className='border px-4 py-2 mt-2 text-lg '>
-                                <p>Description : {job.description }</p>
+                                <p>Description : {job.description}</p>
                                 <p>Requirements : {job.requirements}</p>
                                 <p>Responsiblities : {job.responsibilities}</p>
                             </div>
                         }
 
-                    </div> 
-                 : ''
+                    </div>
+
+                    : ''
             }
         </div>
     );

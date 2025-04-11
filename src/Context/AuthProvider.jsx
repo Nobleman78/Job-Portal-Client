@@ -43,6 +43,7 @@ const AuthProvider = ({ children }) => {
     const [location, setLocation] = useState('');
     const [filterJobs, setFilterJobs] = useState([]);
     const [jobs, setJobs] = useState([]);
+    const [loadingData,setLoadingData] = useState(true);
     const navigate = useNavigate();
 
     const formHandler = (e) => {
@@ -57,6 +58,7 @@ const AuthProvider = ({ children }) => {
         setFilterJobs(filterJob);
         setInput('')
         setLocation('')
+        setLoadingData(false)
 
 
     };
@@ -71,7 +73,8 @@ const AuthProvider = ({ children }) => {
 
     const value = {
         user, loading, createUser, signInWithEmailandPassword, loginWithGoogle,
-        signOutUser, setInput, setLocation, filterJobs, input, location, formHandler
+        signOutUser, setInput, setLocation, filterJobs, input, location, formHandler,loadingData,
+        setLoadingData,setJobs
 
     }
 

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AuthContext from '../Context/Authcontext';
 import { IoBagOutline } from "react-icons/io5";
 import { FaLocationPinLock } from 'react-icons/fa6';
@@ -6,8 +6,26 @@ import { IoTimeOutline } from "react-icons/io5";
 import { FaMoneyBill } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 const Findjob = () => {
-    const { filterJobs } = useContext(AuthContext)
-    return (
+    const { filterJobs, loadingData, setLoadingData } = useContext(AuthContext)
+    useEffect(() => {
+        setLoadingData(true);
+        const timer = setTimeout(() => {
+            setLoadingData(false);
+        }, 1000);
+        return () => clearTimeout(timer);
+    }, [filterJobs]);
+
+    if (loadingData) {
+        return (
+            <div className="sm:max-w-7xl mx-auto px-2 flex justify-center items-center h-64">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            </div>
+        );
+    }
+
+
+    return filterJobs.length > 0 ? (
+
         <div className='sm:max-w-7xl mx-auto px-2'>
 
             {
@@ -38,7 +56,9 @@ const Findjob = () => {
                 })
             }
         </div>
-    );
+    ) : <p className='sm:max-w-7xl mx-auto px-2 mt-10 text-xl'>No Jobs Found</p>;
+
+
 };
 
 export default Findjob;

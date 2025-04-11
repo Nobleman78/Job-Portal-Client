@@ -36,19 +36,26 @@ const AuthProvider = ({ children }) => {
             unsubscribe();
         }
     })
-     
+
     /*This is for filterering */
 
     const [input, setInput] = useState('');
     const [location, setLocation] = useState('');
     const [filterJobs, setFilterJobs] = useState([]);
     const [jobs, setJobs] = useState([]);
-    const [loadingData,setLoadingData] = useState(true);
+    const [loadingData, setLoadingData] = useState(true);
     const navigate = useNavigate();
 
     const formHandler = (e) => {
         e.preventDefault();
         navigate('/findjob');
+        setInput('')
+        setLocation('')
+        setLoadingData(false)
+
+
+    };
+    useEffect(() => {
         const tempdata = [...jobs];
         const filterJob = tempdata.filter(job => {
             const titleMatch = input ? job.title.toLowerCase().includes(input.toLowerCase()) : true;
@@ -56,12 +63,7 @@ const AuthProvider = ({ children }) => {
             return titleMatch && locationMatch;
         });
         setFilterJobs(filterJob);
-        setInput('')
-        setLocation('')
-        setLoadingData(false)
-
-
-    };
+    }, [input,jobs,location])
 
     useEffect(() => {
         fetch('http://localhost:3000/jobs')
@@ -73,8 +75,8 @@ const AuthProvider = ({ children }) => {
 
     const value = {
         user, loading, createUser, signInWithEmailandPassword, loginWithGoogle,
-        signOutUser, setInput, setLocation, filterJobs, input, location, formHandler,loadingData,
-        setLoadingData,setJobs
+        signOutUser, setInput, setLocation, filterJobs, input, location, formHandler, loadingData,
+        setLoadingData, setJobs
 
     }
 

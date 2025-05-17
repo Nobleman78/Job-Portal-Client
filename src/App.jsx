@@ -12,6 +12,7 @@ import Candidate from './Pages/Candidate'
 import Footer from './Pages/Footer'
 import JobDetailes from './components/JobDetailes'
 import ApplyJob from './components/ApplyJob'
+import MyApplications from './components/MyApplications'
 
 function App() {
   return (
@@ -21,15 +22,15 @@ function App() {
       <Routes>
         <Route path='*' element={<NotFound />}></Route>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/jobs/:id' element={<JobDetailes/>}></Route>
+        <Route path='/jobs/:id' element={<JobDetailes />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/registration' element={<Registration />}></Route>
         <Route path='/recruiter' element={<Recruiter />}></Route>
         <Route path='/contact' element={<Contact />}></Route>
         <Route path='/findjob' element={<Findjob />}></Route>
         <Route path='/candidate' element={<Candidate />}></Route>
-        <Route path='/applyJob/:id' element={<ApplyJob/>}></Route>
-
+        <Route path='/applyJob/:id' element={<ApplyJob />}></Route>
+        <Route path='/myApplications' element={<MyApplications />} />
 
       </Routes>
       <Footer />

@@ -8,6 +8,7 @@ import { FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../Utility/Firebase";
+import axios from 'axios'
 
 const Login = () => {
     const { signInWithEmailandPassword, loginWithGoogle } = useContext(AuthContext)
@@ -34,6 +35,11 @@ const Login = () => {
             .then(res => {
                 console.log(res.user)
                 setSuccess(true)
+                const user = { user: email }
+                axios.post('http://localhost:3000/jwt', user, { withCredentials: true })
+                    .then(data => {
+                        console.log(data)
+                    })
                 navigate('/')
 
             })
@@ -47,6 +53,7 @@ const Login = () => {
         loginWithGoogle()
             .then(res => {
                 console.log(res.user)
+
                 navigate('/')
             })
             .catch(error => {
@@ -104,7 +111,7 @@ const Login = () => {
                             <p>Doesn't Have Account?</p>
                             <Link to='/registration'><button className="cursor-pointer">Registration Here</button></Link>
                         </div>
-                    
+
                     </div>
 
                 </form>

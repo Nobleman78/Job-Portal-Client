@@ -3,6 +3,7 @@ body{
     font-family: "Outfit", sans-serif; 
 }
 @import "tailwindcss";
+/* @import "tailwindcss"; */
 a.active hr{
     display: block;
  }

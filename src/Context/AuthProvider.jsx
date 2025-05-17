@@ -49,21 +49,23 @@ const AuthProvider = ({ children }) => {
     const formHandler = (e) => {
         e.preventDefault();
         navigate('/findjob');
-        setInput('')
-        setLocation('')
         setLoadingData(false)
 
 
     };
+
     useEffect(() => {
         const tempdata = [...jobs];
         const filterJob = tempdata.filter(job => {
-            const titleMatch = input ? job.title.toLowerCase().includes(input.toLowerCase()) : true;
-            const locationMatch = location ? job.location.toLowerCase().includes(location.toLowerCase()) : true;
+            const titleMatch = input ? job.title?.toLowerCase().includes(input.toLowerCase()) : true;
+            const locationMatch = location ? job.location?.toLowerCase().includes(location.toLowerCase()) : true;
             return titleMatch && locationMatch;
+
         });
+        
         setFilterJobs(filterJob);
-    }, [input,jobs,location])
+    }, [input, jobs, location])
+
 
     useEffect(() => {
         fetch('http://localhost:3000/jobs')

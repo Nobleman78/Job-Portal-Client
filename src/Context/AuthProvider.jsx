@@ -3,6 +3,7 @@ import AuthContext from './Authcontext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { auth } from '../Utility/Firebase';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const AuthProvider = ({ children }) => {
@@ -30,6 +31,20 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            if (currentUser?.email) {
+                const user = { email: currentUser.email }
+                axios.post('http://localhost:3000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log('Login Data',res.data)
+                    })
+                navigate('/')
+
+            }
+            else{
+                axios.post('http://localhost:3000/logout',{},{withCredentials:true})
+                .then(res=>console.log('Logout Data',res.data))
+            }
+
             setLoading(false);
         })
         return () => {
@@ -62,7 +77,7 @@ const AuthProvider = ({ children }) => {
             return titleMatch && locationMatch;
 
         });
-        
+
         setFilterJobs(filterJob);
     }, [input, jobs, location])
 

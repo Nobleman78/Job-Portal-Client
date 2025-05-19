@@ -5,12 +5,15 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import AuthProvider from './Context/AuthProvider.jsx'
 import { HelmetProvider } from 'react-helmet-async'
+import JobProvider from './Context/JobProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <HelmetProvider>
       <AuthProvider>
-        <App />
+        <JobProvider>
+          <App />
+        </JobProvider>
       </AuthProvider>
     </HelmetProvider>
   </BrowserRouter>,

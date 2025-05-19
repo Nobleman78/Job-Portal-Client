@@ -1,13 +1,14 @@
 import Lottie from "lottie-react";
 import { useContext, useRef, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginanimation from '../assets/Lottie/Animation - 1743854753202.json'
 import AuthContext from "../Context/Authcontext";
 import { FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../Utility/Firebase";
+import axios from "axios";
 
 
 const Login = () => {
@@ -17,6 +18,9 @@ const Login = () => {
     const [success, setSuccess] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const location = useLocation()
+    const from = location.state?.from?.pathname
+    console.log(from)
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -35,7 +39,7 @@ const Login = () => {
             .then(res => {
                 console.log(res.user)
                 setSuccess(true)
-             
+
             })
             .catch(error => {
                 console.log(error.message);
@@ -47,12 +51,27 @@ const Login = () => {
         loginWithGoogle()
             .then(res => {
                 console.log(res.user)
+                const email = res.user.email
+                console.log(email)
+                if (email) {
+                    const user = { email: email }
+                    console.log(user)
+                    axios.post('http://localhost:3000/jwt', user, { withCredentials: true })
+                        .then(res => {
+                            res.data
+                            navigate(from, { replace: true })
+                        })
+                        .catch(err => {
+                            console.error("JWT creation failed:", err);
+                        });
+                }
 
-                navigate('/')
             })
             .catch(error => {
                 console.log(error)
             })
+        navigate(from, { replace: true })
+
     }
 
 

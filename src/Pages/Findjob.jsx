@@ -1,19 +1,19 @@
 import React, { useContext, useEffect } from 'react';
-import AuthContext from '../Context/Authcontext';
 import { IoBagOutline } from "react-icons/io5";
 import { FaLocationPinLock } from 'react-icons/fa6';
 import { IoTimeOutline } from "react-icons/io5";
 import { FaMoneyBill } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import JobContext from '../Context/Jobcontext';
 const Findjob = () => {
-    const { filterJobs, loadingData, setLoadingData } = useContext(AuthContext)
+    const { filterJobs, loadingData, setLoadingData } = useContext(JobContext)
     useEffect(() => {
         setLoadingData(true);
         const timer = setTimeout(() => {
             setLoadingData(false);
         }, 1000);
         return () => clearTimeout(timer);
-    }, [filterJobs]);
+    }, [filterJobs,setLoadingData]);
 
     if (loadingData == true) {
         return (

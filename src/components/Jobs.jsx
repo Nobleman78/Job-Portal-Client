@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import JobFeatures from './JobFeatures';
+import axios from 'axios';
 
 const Jobs = () => {
     const [jobs, setJobs] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:3000/jobs')
-            .then(res => res.json())
-            .then(data => setJobs(data))
+        // fetch('http://localhost:3000/jobs')
+        //     .then(res => res.json())
+        //     .then(data => setJobs(data))
+        axios.get('http://localhost:3000/jobs')
+            .then(res => setJobs(res.data))
     }, [])
     return (
         <div className='mt-10'>

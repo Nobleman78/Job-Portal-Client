@@ -4,10 +4,11 @@ import { useContext } from 'react';
 import { FaLocationArrow, FaSearch } from 'react-icons/fa';
 import { SlLocationPin } from "react-icons/sl";
 import AuthContext from '../Context/Authcontext';
+import JobContext from '../Context/Jobcontext';
 
 
 const Banner = () => {
-    const { setInput, setLocation, input, location,formHandler } = useContext(AuthContext)
+    const { setInput, setLocation, input, location,formHandler } = useContext(JobContext)
  
     return (
         <div className='flex flex-col-reverse md:flex-row justify-between my-10' >

@@ -8,11 +8,12 @@ import Login from './Pages/Login'
 import Recruiter from './Pages/Recruiter'
 import Contact from './Pages/Contact'
 import Findjob from './Pages/Findjob'
-import Candidate from './Pages/Candidate'
 import Footer from './Pages/Footer'
 import JobDetailes from './components/JobDetailes'
 import ApplyJob from './components/ApplyJob'
 import MyApplications from './components/MyApplications'
+import Dashboard from './Pages/Dashboard'
+import AdminHome from './components/Home/AdminHome'
 
 function App() {
   return (
@@ -28,9 +29,12 @@ function App() {
         <Route path='/recruiter' element={<Recruiter />}></Route>
         <Route path='/contact' element={<Contact />}></Route>
         <Route path='/findjob' element={<Findjob />}></Route>
-        <Route path='/candidate' element={<Candidate />}></Route>
+        <Route path='/dashboard' element={<Dashboard />}>
+          <Route path='/dashboard/home' element={<AdminHome />}></Route>
+          <Route path='/dashboard/myApplications' element={<MyApplications />} />
+        </Route>
         <Route path='/applyJob/:id' element={<ApplyJob />}></Route>
-        <Route path='/myApplications' element={<MyApplications />} />
+
 
       </Routes>
       <Footer />

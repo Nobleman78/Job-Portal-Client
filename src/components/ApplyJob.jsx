@@ -105,7 +105,7 @@ const ApplyJob = () => {
         setFileUrl(null);
         setFileName('');
         setShowURL(false);
-        navigate('/myApplications')
+        navigate('/dashboard')
     };
 
     return (

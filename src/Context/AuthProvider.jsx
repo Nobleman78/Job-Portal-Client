@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react';
 import AuthContext from './Authcontext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { auth } from '../Utility/Firebase';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
 
 const AuthProvider = ({ children }) => {
 
@@ -31,69 +28,18 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            if (currentUser?.email) {
-                const user = { email: currentUser.email }
-                axios.post('http://localhost:3000/jwt', user, { withCredentials: true })
-                    .then(res => {
-                        console.log('Login Data',res.data)
-                    })
-                navigate('/')
-
-            }
-            else{
-                axios.post('http://localhost:3000/logout',{},{withCredentials:true})
-                .then(res=>console.log('Logout Data',res.data))
-            }
-
-            setLoading(false);
+            setLoading(false)
         })
         return () => {
             unsubscribe();
         }
     })
 
-    /*This is for filterering */
-
-    const [input, setInput] = useState('');
-    const [location, setLocation] = useState('');
-    const [filterJobs, setFilterJobs] = useState([]);
-    const [jobs, setJobs] = useState([]);
-    const [loadingData, setLoadingData] = useState(true);
-    const navigate = useNavigate();
-
-    const formHandler = (e) => {
-        e.preventDefault();
-        navigate('/findjob');
-        setLoadingData(false)
-
-
-    };
-
-    useEffect(() => {
-        const tempdata = [...jobs];
-        const filterJob = tempdata.filter(job => {
-            const titleMatch = input ? job.title?.toLowerCase().includes(input.toLowerCase()) : true;
-            const locationMatch = location ? job.location?.toLowerCase().includes(location.toLowerCase()) : true;
-            return titleMatch && locationMatch;
-
-        });
-
-        setFilterJobs(filterJob);
-    }, [input, jobs, location])
-
-
-    useEffect(() => {
-        fetch('http://localhost:3000/jobs')
-            .then(res => res.json())
-            .then(data => setJobs(data));
-    }, []);
-
 
 
     const value = {
         user, loading, createUser, signInWithEmailandPassword, loginWithGoogle,
-        signOutUser, setInput, setLocation, filterJobs, input, location, formHandler, loadingData,
-        setLoadingData, setJobs
+        signOutUser
 
     }
 

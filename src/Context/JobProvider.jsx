@@ -10,15 +10,20 @@ const JobProvider = ({ children }) => {
     const [jobs, setJobs] = useState([]);
     const [loadingData, setLoadingData] = useState(true);
     const navigate = useNavigate();
+    const [filterKey, setFilterKey] = useState('')
+    console.log(filterKey)
+    const [filterMode, setFilterMode] = useState(null); // "search" or "category"
+
 
     const formHandler = (e) => {
         e.preventDefault();
         navigate('/findjob');
+        setFilterMode('search')
         setLoadingData(false);
     };
 
     useEffect(() => {
-         axios.get('http://localhost:3000/jobs')
+        axios.get('http://localhost:3000/jobs')
             .then(res => setJobs(res.data))
     }, []);
 
@@ -32,6 +37,21 @@ const JobProvider = ({ children }) => {
         setFilterJobs(filtered);
     }, [input, location, jobs]);
 
+    //Filter From Available jobs
+
+    const handleOnClick = (category) => {
+        setFilterKey(category)
+        navigate('/findjob')
+        setFilterMode('category')
+    }
+
+    const filtered = filterJobs.filter(job => {
+        const title = job.title.toLowerCase();
+        const keywords = filterKey.toLocaleLowerCase().split(' ')
+        return keywords.some(keyword => title.includes(keyword))
+    })
+    console.log(filtered)
+
     const value = {
         input,
         location,
@@ -42,7 +62,9 @@ const JobProvider = ({ children }) => {
         setJobs,
         loadingData,
         setLoadingData,
-        formHandler
+        formHandler,
+        handleOnClick
+        , filtered,filterMode,setFilterMode,setFilterKey
     };
 
     return (

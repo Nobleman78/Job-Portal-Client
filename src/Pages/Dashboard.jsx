@@ -22,11 +22,11 @@ const Dashboard = () => {
 
             <div className='w-16 md:w-72 md:p-6'>
                 <nav className='flex flex-col gap-4 bg-blue-500 p-6 text-white h-120 rounded-2xl'>
-                    <NavLink to="/dashboard/Home" className={({ isActive }) => `flex items-center py-2 px-3 rounded ${isActive ? 'bg-orange-500' : 'bg-transparent'}`}>
+                    <NavLink to="/dashboard/Home" className={({ isActive }) => `flex items-center py-2 px-3 rounded ${isActive ? 'bg-orange-500' : 'bg-yellow-400'}`}>
                         <IoHomeOutline className="mr-0 md:mr-3 text-lg" />
                         <span className="hidden md:inline"> Home</span>
                     </NavLink>
-                    <NavLink to="/dashboard/myApplications" className={({ isActive }) => `flex items-center py-2 px-3 rounded ${isActive ? 'bg-orange-500' : 'bg-transparent'}`}>
+                    <NavLink to="/dashboard/myApplications" className={({ isActive }) => `flex items-center py-2 px-3 rounded ${isActive ? 'bg-orange-500' : 'bg-yellow-400'}`}>
                         <FaCalendarAlt className="mr-0 md:mr-3 text-lg" />
                         <span className="hidden md:inline">My Applications</span>
                     </NavLink>

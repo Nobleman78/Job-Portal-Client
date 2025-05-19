@@ -40,10 +40,10 @@ const Navbar = () => {
                     <p>FIND JOB</p>
                     <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
                 </NavLink>
-                <NavLink to='/recruiter' className='flex flex-col items-center gap-1' >
+                {/* <NavLink to='/recruiter' className='flex flex-col items-center gap-1' >
                     <p>RECRUITER</p>
                     <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
-                </NavLink>
+                </NavLink> */}
                 <NavLink to='/dashboard' className='flex flex-col items-center gap-1' >
                     <p>DASHBOARD</p>
                     <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />

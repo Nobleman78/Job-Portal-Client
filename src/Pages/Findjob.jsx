@@ -6,14 +6,16 @@ import { FaMoneyBill } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import JobContext from '../Context/Jobcontext';
 const Findjob = () => {
-    const { filterJobs, loadingData, setLoadingData } = useContext(JobContext)
+    const { filterJobs, loadingData, setLoadingData, filtered, filterMode,jobs } = useContext(JobContext)
+    //  Just a simple Set time out fucntion so that i can show a spinner when data
+    // loading
     useEffect(() => {
         setLoadingData(true);
         const timer = setTimeout(() => {
             setLoadingData(false);
         }, 1000);
         return () => clearTimeout(timer);
-    }, [filterJobs,setLoadingData]);
+    }, [filterJobs, setLoadingData]);
 
     if (loadingData == true) {
         return (
@@ -22,14 +24,25 @@ const Findjob = () => {
             </div>
         );
     }
+    // This is a simple array for store filterd and filter jobs data
+    let finalJobs = [];
+
+    if (filterMode === 'category') {
+        finalJobs = filtered;
+    } else if (filterMode === 'search') {
+        finalJobs = filterJobs;
+    }
+    else{
+        finalJobs = [...jobs]
+    }
 
 
-    return filterJobs.length > 0 ? (
+    return finalJobs.length > 0 ? (
 
         <div className='sm:max-w-7xl mx-auto px-2'>
 
             {
-                filterJobs.map((job) => {
+                finalJobs.map((job) => {
                     return (
                         <div key={job._id} className='border border-gray-300 px-1 lg:px-5 py-5 mt-10' >
                             <div className='flex items-start gap-4 '>

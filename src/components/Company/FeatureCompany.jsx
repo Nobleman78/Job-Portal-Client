@@ -18,7 +18,7 @@ const PrevArrow = ({ onClick }) => (
 
 const cards = [
     {
-        logo: 'https://img.naukimg.com/logo_images/groups/v2/3835862.gif',
+        logo: 'https://img.naukimg.com/logo_images/groups/v2/4702913.gif',
         title: 'Jio',
         ratings: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
         numberOfRatings: 4.0,
@@ -34,7 +34,7 @@ const cards = [
         descp: 'True 5g Provider'
     },
     {
-        logo: 'https://img.naukimg.com/logo_images/groups/v2/3835862.gif',
+        logo: 'https://img.naukimg.com/logo_images/groups/v2/315118.gif',
         title: 'Jio',
         ratings: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
         numberOfRatings: 4.0,
@@ -42,7 +42,7 @@ const cards = [
         descp: 'True 5g Provider'
     },
     {
-        logo: 'https://img.naukimg.com/logo_images/groups/v2/3835862.gif',
+        logo: 'https://img.naukimg.com/logo_images/groups/v2/21746.gif',
         title: 'Jio',
         ratings: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
         numberOfRatings: 4.0,
@@ -50,7 +50,7 @@ const cards = [
         descp: 'True 5g Provider'
     },
     {
-        logo: 'https://img.naukimg.com/logo_images/groups/v2/3835862.gif',
+        logo: 'https://img.naukimg.com/logo_images/groups/v2/2095704.gif',
         title: 'Jio',
         ratings: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
         numberOfRatings: 4.0,
@@ -87,34 +87,24 @@ const FeatureCompany = () => {
         ]
     };
     return (
-        <div>
+        <div className='mt-10'>
             <h2 className='text-4xl text-center text-gray-800 font-semibold'>Features Company Actively Hireing</h2>
-            {/* <div className='flex flex-col w-50 border items-center '>
-                <img src="https://img.naukimg.com/logo_images/groups/v2/445608.gif" alt="" />
-                <div>
-                    <h2 className='text-center'>Apple</h2>
-                    <div className='flex gap-3'>
-                        <img src="https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg" alt="" />
-                        <p>4.3</p>
-                        <span className='w-0 h-2 border border-gray-50 '></span>
-                        <p>604 reviews</p>
-                    </div>
-                </div>
-
-            </div> */}
             <Slider {...sliderSettings}>
                 {cards.map((card, index) => (
-                    <div key={index} className="px-2"> {/* This adds space between slides */}
-                        <div className="border border-gray-200 px-4 py-4 rounded-lg bg-white hover:shadow-2xl overflow-hidden transition-shadow h-full ">
-                            <img src={card.logo} alt="" />
-                            <h2 className='text-lg font-semibold mb-2'>{card.title}</h2>
-
-                            <div className='flex'>
-                                <img src={card.ratings} alt="" />
-                                <p>{card.numberOfRatings}</p>
-                                <p>{card.reviewText}</p>
+                    <div key={index} className="px-2 mt-10 " > {/* This adds space between slides */}
+                        <div className="cursor-pointer border border-gray-200 px-4 py-4 rounded-lg bg-white hover:shadow-2xl overflow-hidden transition-shadow h-full flex flex-col items-center justify-center gap-4">
+                            <img className='w-30 h-10' src={card.logo} alt="" />
+                            <div className='flex flex-col items-center justify-center border px-4 py-2 rounded-xl border-rose-100 bg-rose-100'>
+                                <h2 className='text-lg font-semibold mb-2'>{card.title}</h2>
+                                <div className='flex gap-2 items-center'>
+                                    <img src={card.ratings} alt="" />
+                                    <p>{card.numberOfRatings}</p>
+                                    <span className='w-0 h-4 border border-gray-500'></span>
+                                    <p>{card.reviewText}</p>
+                                </div>
                             </div>
                             <p>{card.descp}</p>
+                            <button className='bg-blue-500 px-4 py-2 rounded-full text-white'>View Jobs</button>
                         </div>
                     </div>
                 ))}

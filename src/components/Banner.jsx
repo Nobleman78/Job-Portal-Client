@@ -11,7 +11,7 @@ const Banner = () => {
     const { setInput, setLocation, input, location,formHandler } = useContext(JobContext)
  
     return (
-        <div className='flex flex-col-reverse md:flex-row justify-between my-10' >
+        <div className='flex flex-col-reverse md:flex-row justify-between my-10 ' >
             <div className='w-full md:w-[50%] lg:w-[40%] mt-10'>
                 <motion.h2
                     animate={{ x: 30, color: 'green', }}
@@ -23,8 +23,8 @@ const Banner = () => {
                         transition={{ duration: 1.5, repeat: Infinity }}
                     >Find A Job</motion.span> That Suits Your Interest and Skills
                 </motion.h2>
-                <p className='text-gray-600'>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. In perferendis quod quaerat dolorem tenetur consectetur nulla odio quis, optio repellendus?
+                <p className='text-3xl text-gray-600'>
+                   Find your dream job now
                 </p>
                 {/*------------ Search Section Start------------ */}
                 <form onSubmit={formHandler} className="flex items-center mt-5 lg:mt-10 border border-gray-400 rounded-md overflow-hidden x">

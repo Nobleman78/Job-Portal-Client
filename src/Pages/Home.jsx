@@ -3,6 +3,9 @@ import Banner from '../components/Banner';
 import Jobcategory from '../components/Jobcategory';
 import Jobs from '../components/Jobs';
 import JobContext from '../Context/Jobcontext';
+import Company from '../components/Company/Company';
+import JobFeatures from '../components/JobFeatures';
+import FeatureCompany from '../components/Company/FeatureCompany';
 
 const Home = () => {
     const { setInput, setLocation, setFilterKey, setLoadingData, setFilterMode, } = useContext(JobContext);
@@ -18,6 +21,8 @@ const Home = () => {
             <Banner />
             <Jobcategory />
             <Jobs />
+            <Company/>
+            <FeatureCompany/>
         </div>
     );
 };

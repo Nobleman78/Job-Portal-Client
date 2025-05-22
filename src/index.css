@@ -1,9 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-body{
-    font-family: "Outfit", sans-serif; 
+
+body {
+    font-family: "Outfit", sans-serif;
 }
+
 @import "tailwindcss";
+
 /* @import "tailwindcss"; */
-a.active hr{
+a.active hr {
     display: block;
- }
+}
+
+:root {
+    --swiper-navigation-size: 20px !important;
+    /* Controls arrow icon size */
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    width: 30px;
+    /* Controls button area */
+    height: 30px;
+    border-radius: 50%;
+    color: black;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Optional: fine-tune icon size directly */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: var(--swiper-navigation-size);
+}

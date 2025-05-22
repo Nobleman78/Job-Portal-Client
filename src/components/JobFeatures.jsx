@@ -18,7 +18,7 @@ const JobFeatures = ({ job }) => {
                         <h2 className='font-semibold  lg:text-lg'>{title}</h2>
                         <div className='flex items-center gap-3 text-sm'>
                             <p className='flex items-center gap-2 ' ><IoBagOutline />Segment</p>
-                            <p className='flex items-center gap-2' ><FaLocationPinLock /> {location}</p>
+                            <p className='flex items-center gap-2 text-xs' ><FaLocationPinLock /> {location}</p>
                             <p className='hidden lg:flex lg:items-center lg:gap-2'><IoTimeOutline />Hours Ago</p>
                             <p className='hidden lg:flex lg:items-center lg:gap-2 text-xs'><FaMoneyBill />${salaryRange.min} - ${salaryRange.max}</p>
                         </div>

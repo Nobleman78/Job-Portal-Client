@@ -6,6 +6,7 @@ import JobContext from '../Context/Jobcontext';
 import Company from '../components/Company/Company';
 import JobFeatures from '../components/JobFeatures';
 import FeatureCompany from '../components/Company/FeatureCompany';
+import DiscoverJobs from '../components/DisCoverJobs/DiscoverJobs';
 
 const Home = () => {
     const { setInput, setLocation, setFilterKey, setLoadingData, setFilterMode, } = useContext(JobContext);
@@ -23,6 +24,7 @@ const Home = () => {
             <Jobs />
             <Company/>
             <FeatureCompany/>
+            <DiscoverJobs/>
         </div>
     );
 };

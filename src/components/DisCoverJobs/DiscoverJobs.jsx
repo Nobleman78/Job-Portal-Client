@@ -2,7 +2,7 @@ import React from 'react';
 
 const DiscoverJobs = () => {
     return (
-        <div className='relative bg-gradient-to-b from-rose-50 to-rose-100 mt-20 rounded-2xl'>
+        <div className='relative  bg-gradient-to-b from-rose-50 to-rose-100 mt-20 rounded-2xl'>
             <div className='px-20 py-10'>
                 <img className='h-50' src="https://static.naukimg.com/s/0/0/i/role-collection-ot.png" alt="" />
                 <h2 className='text-2xl font-semibold '>Discover Jobs across popular roles</h2>

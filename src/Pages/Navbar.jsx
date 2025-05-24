@@ -48,8 +48,8 @@ const Navbar = () => {
                     <p>DASHBOARD</p>
                     <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
                 </NavLink>
-                <NavLink to='/contact' className='flex flex-col items-center gap-1' >
-                    <p>CONTACT</p>
+                <NavLink to='/services' className='flex flex-col items-center gap-1' >
+                    <p>SERVICES</p>
                     <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
                 </NavLink>
 

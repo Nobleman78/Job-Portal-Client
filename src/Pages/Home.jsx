@@ -8,6 +8,7 @@ import JobFeatures from '../components/JobFeatures';
 import FeatureCompany from '../components/Company/FeatureCompany';
 import DiscoverJobs from '../components/DisCoverJobs/DiscoverJobs';
 import SponsorCompany from '../components/Company/SponsorCompany';
+import Download from '../components/Download/Download';
 
 const Home = () => {
     const { setInput, setLocation, setFilterKey, setLoadingData, setFilterMode, } = useContext(JobContext);
@@ -27,6 +28,7 @@ const Home = () => {
             <FeatureCompany/>
             <DiscoverJobs/>
             <SponsorCompany/>
+            <Download/>
         </div>
     );
 };

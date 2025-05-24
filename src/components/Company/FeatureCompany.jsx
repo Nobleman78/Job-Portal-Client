@@ -1,6 +1,7 @@
 import React from 'react';
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr';
 import Slider from 'react-slick';
+
 const NextArrow = ({ onClick }) => (
     <button onClick={onClick} className='absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 '>
         <GrFormNext className="text-xl text-gray-600" />
@@ -9,9 +10,7 @@ const NextArrow = ({ onClick }) => (
 const PrevArrow = ({ onClick }) => (
     <button
         onClick={onClick}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition"
-        aria-label="Previous"
-    >
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition">
         <GrFormPrevious className="text-xl text-gray-600" />
     </button>
 );
@@ -91,7 +90,7 @@ const FeatureCompany = () => {
             <h2 className='text-4xl text-center text-gray-800 font-semibold'>Features Company Actively Hireing</h2>
             <Slider {...sliderSettings}>
                 {cards.map((card, index) => (
-                    <div key={index} className="px-2 mt-10 " > {/* This adds space between slides */}
+                    <div key={index} className="px-2 mt-10 " > 
                         <div className="cursor-pointer border border-gray-200 px-4 py-4 rounded-lg bg-white hover:shadow-2xl overflow-hidden transition-shadow h-full flex flex-col items-center justify-center gap-4">
                             <img className='w-30 h-10' src={card.logo} alt="" />
                             <div className='flex flex-col items-center justify-center border px-4 py-2 rounded-xl border-rose-100 bg-rose-100'>

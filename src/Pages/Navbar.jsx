@@ -32,11 +32,11 @@ const Navbar = () => {
                 <Link to='/'><img className='lg:w-50 w-40 h-8 lg:h-12' src={logo} alt="Logo" /></Link>
             </div>
             <ul className='hidden sm:flex gap-5 text-sm '>
-                <NavLink to='/' className='flex flex-col items-center gap-1' >
+                <NavLink onClick={()=>scrollTo(0,0)} to='/' className='flex flex-col items-center gap-1' >
                     <p>HOME</p>
                     <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
                 </NavLink>
-                <NavLink to='/findjob' className='flex flex-col items-center gap-1' >
+                <NavLink onClick={()=>scrollTo(0,0)} to='/findjob' className='flex flex-col items-center gap-1' >
                     <p>FIND JOB</p>
                     <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
                 </NavLink>
@@ -44,11 +44,11 @@ const Navbar = () => {
                     <p>RECRUITER</p>
                     <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
                 </NavLink> */}
-                <NavLink to='/dashboard' className='flex flex-col items-center gap-1' >
+                <NavLink onClick={()=>scrollTo(0,0)} to='/dashboard' className='flex flex-col items-center gap-1' >
                     <p>DASHBOARD</p>
                     <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
                 </NavLink>
-                <NavLink to='/services' className='flex flex-col items-center gap-1' >
+                <NavLink onClick={()=>scrollTo(0,0)} to='/services' className='flex flex-col items-center gap-1' >
                     <p>SERVICES</p>
                     <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
                 </NavLink>

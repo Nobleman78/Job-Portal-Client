@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../assets/images/Job-Logo.jpg'
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { FaLinkedin } from 'react-icons/fa6';
 
@@ -8,7 +7,7 @@ const Footer = () => {
         <div className='sm:max-w-7xl mx-auto px-2 '>
             <div className='flex flex-col scroll-smooth md:flex-row mt-20  lg:gap-10 justify-start md:justify-between'>
                 <div className='lg:w-1/3 flex flex-col gap-4 text-gray-600'>
-                    <img className='w-50' src={logo} alt="" />
+                    <img className='w-50' src='https://static.naukimg.com/s/0/0/i/naukri-identity/naukri_gnb_logo.svg' alt="" />
                     <p>Call Us</p>
                     <p>++8801587093456</p>
                     <p>1002, Kazipara, Dhaka </p>

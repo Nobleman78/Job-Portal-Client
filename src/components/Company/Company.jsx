@@ -17,6 +17,10 @@ import FinanceThree from '../../assets/Company/FinanceThree.png'
 import EducationOne from '../../assets/Company/EducationOne.png'
 import EducationTwo from '../../assets/Company/EducationTwo.jpg'
 import EducationThree from '../../assets/Company/EducationThree.png'
+import { useContext } from 'react';
+import TopCompanyJobsContext from '../../Context/TopCompanyJobs';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const NextArrow = ({ onClick }) => (
@@ -40,6 +44,8 @@ const PrevArrow = ({ onClick }) => (
 );
 
 const Company = () => {
+    const { setTopJobKeyword } = useContext(TopCompanyJobsContext)
+    const navigate = useNavigate()
     const sliderSettings = {
         dots: true,
         infinite: true,
@@ -93,16 +99,15 @@ const Company = () => {
             images: [EducationOne, EducationTwo, EducationThree]
         }
     ];
-
+   
     return (
         <div className="max-w-7xl mx-auto p-6 relative mt-20">
             <h1 className="text-4xl font-semibold text-gray-800 mb-8 text-center">Top companies hiring now</h1>
-
             <div className="mb-10 relative">
                 <Slider {...sliderSettings}>
                     {cards.map((card, index) => (
                         <div key={index} className="px-2"> {/* This adds space between slides */}
-                            <div className="cursor-pointer border border-gray-200 px-4 py-4 rounded-lg bg-white hover:shadow-2xl overflow-hidden transition-shadow h-full ">
+                            <div onClick={() => {setTopJobKeyword(card.title),navigate(`/top-companies-job/${card.title}`),scrollTo(0,0)}} className="cursor-pointer border border-gray-200 px-4 py-4 rounded-lg bg-white hover:shadow-2xl overflow-hidden transition-shadow h-full ">
                                 <h2 className='text-lg font-semibold mb-2'>{card.title}</h2>
                                 <p className='text-gray-600 mb-3'>{card.text}</p>
                                 <div className='flex items-center gap-3'>

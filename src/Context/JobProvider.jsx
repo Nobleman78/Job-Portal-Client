@@ -11,7 +11,6 @@ const JobProvider = ({ children }) => {
     const [loadingData, setLoadingData] = useState(true);
     const navigate = useNavigate();
     const [filterKey, setFilterKey] = useState('')
-    console.log(filterKey)
     const [filterMode, setFilterMode] = useState(null); // "search" or "category"
 
 
@@ -50,7 +49,6 @@ const JobProvider = ({ children }) => {
         const keywords = filterKey.toLocaleLowerCase().split(' ')
         return keywords.some(keyword => title.includes(keyword))
     })
-    console.log(filtered)
 
     const value = {
         input,

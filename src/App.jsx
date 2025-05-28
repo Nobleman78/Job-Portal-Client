@@ -16,6 +16,7 @@ import Dashboard from './Pages/Dashboard'
 import AdminHome from './components/Home/AdminHome'
 import Companies from './components/Company/Companies'
 import Services from './components/Service/Services'
+import TopCompanyJobs from './components/Company/TopCompanyJobs'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/contact' element={<Contact />}></Route>
         <Route path='/companies' element={<Companies />}></Route>
         <Route path='/services' element={<Services />}></Route>
+        <Route path='/top-companies-job/:title' element={<TopCompanyJobs />}></Route>
         <Route path='/findjob' element={<Findjob />}></Route>
         <Route path='/dashboard' element={<Dashboard />}>
           <Route path='/dashboard/home' element={<AdminHome />}></Route>

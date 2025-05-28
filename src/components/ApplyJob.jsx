@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import AuthContext from '../Context/Authcontext';
+import { IoMdArrowBack } from 'react-icons/io';
 
 const ApplyJob = () => {
  
@@ -110,6 +111,9 @@ const ApplyJob = () => {
 
     return (
         <div className='sm:max-w-7xl mx-auto px-2 mt-10'>
+             <button onClick={()=>navigate(-1)} className="mt-5 p-2 transition-all duration-300 ease-in-out bg-gray-100  hover:bg-gray-200 rounded-full ">
+                            <IoMdArrowBack className=" text-gray-700 hover:text-blue-600 w-6 h-6 "/>
+                        </button>
             <form onSubmit={submitJobApplication} className='shadow-xl w-2xl mx-auto px-10 py-10 rounded-2xl'>
                 <div className='flex flex-col mb-2 gap-2'>
                     <label>Full Name:</label>

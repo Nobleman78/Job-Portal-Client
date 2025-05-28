@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import TopCompanyJobsContext from '../../Context/TopCompanyJobs';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const TopCompanyJobs = () => {
     const { filterdJob, loading, setLoading } = useContext(TopCompanyJobsContext);
@@ -22,9 +23,9 @@ const TopCompanyJobs = () => {
         <div className="p-6 bg-gray-50 min-h-screen">
             {filterdJob.map((job) => (
                 <div key={job._id} className="mb-10 p-6 bg-white rounded-lg shadow-md">
-                    <div className="space-y-6">
+                    <div key={job._id} className="space-y-6">
                         {job.companies.map((company) => (
-                            <div key={company.id} className=" p-4 rounded-md bg-gray-100">
+                            <div key={company._id} className=" p-4 rounded-md bg-gray-100">
                                 <h3 className="text-lg font-semibold mb-3 text-gray-800">{company.name}</h3>
                                 <div className="space-y-3">
                                     {company.jobs.map((jobItem, index) => (
@@ -33,6 +34,9 @@ const TopCompanyJobs = () => {
                                             <span className="text-gray-600 text-sm">{jobItem.location}</span>
                                             <span className="text-green-600 font-medium">{jobItem.salary}</span>
                                             <span className="text-gray-500 italic text-xs">{jobItem.type}</span>
+                                            <Link to={`/jobs/${job._id}`}>
+                                                <button className='bg-blue-500 py-1 text-white rounded w-30 cursor-pointer'>Apply</button>
+                                            </Link>
                                         </div>
                                     ))}
                                 </div>

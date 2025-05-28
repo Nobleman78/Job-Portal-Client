@@ -3,12 +3,12 @@ import { IoBagOutline } from "react-icons/io5";
 import { FaLocationPinLock } from 'react-icons/fa6';
 import { IoTimeOutline } from "react-icons/io5";
 import { FaMoneyBill } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import JobContext from '../Context/Jobcontext';
+import { IoMdArrowBack } from "react-icons/io";
 const Findjob = () => {
-    const { filterJobs, loadingData, setLoadingData, filtered, filterMode,jobs } = useContext(JobContext)
-    //  Just a simple Set time out fucntion so that i can show a spinner when data
-    // loading
+    const { filterJobs, loadingData, setLoadingData, filtered, filterMode, jobs } = useContext(JobContext)
+    const navigate = useNavigate()
     useEffect(() => {
         setLoadingData(true);
         const timer = setTimeout(() => {
@@ -32,7 +32,7 @@ const Findjob = () => {
     } else if (filterMode === 'search') {
         finalJobs = filterJobs;
     }
-    else{
+    else {
         finalJobs = [...jobs]
     }
 
@@ -40,6 +40,9 @@ const Findjob = () => {
     return finalJobs.length > 0 ? (
 
         <div className='sm:max-w-7xl mx-auto px-2'>
+            <button onClick={()=>navigate('/')} className="mt-5 p-2 transition-all duration-300 ease-in-out bg-gray-100  hover:bg-gray-200 rounded-full ">
+                <IoMdArrowBack className=" text-gray-700 hover:text-blue-600 w-6 h-6 "/>
+            </button>
 
             {
                 finalJobs.map((job) => {

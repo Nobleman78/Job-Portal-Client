@@ -50,6 +50,10 @@ const JobProvider = ({ children }) => {
         return keywords.some(keyword => title.includes(keyword))
     })
 
+    // This is for location based filter for jobs
+    const [joblocation, setJobLocation] = useState('')
+    console.log(joblocation)
+
     const value = {
         input,
         location,
@@ -62,7 +66,7 @@ const JobProvider = ({ children }) => {
         setLoadingData,
         formHandler,
         handleOnClick
-        , filtered,filterMode,setFilterMode,setFilterKey
+        , filtered,filterMode,setFilterMode,setFilterKey,setJobLocation
     };
 
     return (

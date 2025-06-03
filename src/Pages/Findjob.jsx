@@ -6,6 +6,7 @@ import { FaMoneyBill } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import JobContext from '../Context/Jobcontext';
 import { IoMdArrowBack } from "react-icons/io";
+import AuthContext from '../Context/Authcontext';
 const Findjob = () => {
     const { filterJobs, loadingData, setLoadingData, filtered, filterMode, jobs } = useContext(JobContext)
     const navigate = useNavigate()

@@ -107,7 +107,7 @@ const Company = () => {
                 <Slider {...sliderSettings}>
                     {cards.map((card, index) => (
                         <div key={index} className="px-2"> {/* This adds space between slides */}
-                            <div onClick={() => {setTopJobKeyword(card.title),navigate(`/top-companies-job/${card.title}`),scrollTo(0,0)}} className="cursor-pointer border border-gray-200 px-4 py-4 rounded-lg bg-white hover:shadow-2xl overflow-hidden transition-shadow h-full ">
+                            <div onClick={() => {setTopJobKeyword(card.title),navigate(`/top-companies-job/${card.title}`),scrollTo(0,0)}} className="cursor-pointer border border-gray-200 px-4 py-4 rounded-lg bg-white overflow-hidden transition-shadow h-full ">
                                 <h2 className='text-lg font-semibold mb-2'>{card.title}</h2>
                                 <p className='text-gray-600 mb-3'>{card.text}</p>
                                 <div className='flex items-center gap-3'>

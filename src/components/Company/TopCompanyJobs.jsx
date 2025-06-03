@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import TopCompanyJobsContext from '../../Context/TopCompanyJobs';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+import { IoMdArrowBack } from 'react-icons/io';
 
 const TopCompanyJobs = () => {
     const { filterdJob, loading, setLoading } = useContext(TopCompanyJobsContext);
+    const navigate = useNavigate()
     useEffect(() => {
         setLoading(true)
         const timer = setTimeout(() => {
@@ -21,6 +23,9 @@ const TopCompanyJobs = () => {
     }
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
+            <button onClick={() => navigate('/')} className="mt-5 p-2 mb-3 transition-all duration-300 ease-in-out bg-gray-100  hover:bg-gray-200 rounded-full ">
+                <IoMdArrowBack className=" text-gray-700 hover:text-blue-600 w-6 h-6 " />
+            </button>
             {filterdJob.map((job) => (
                 <div key={job._id} className="mb-10 p-6 bg-white rounded-lg shadow-md">
                     <div key={job._id} className="space-y-6">

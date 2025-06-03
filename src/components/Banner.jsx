@@ -1,4 +1,3 @@
-import heroImage from '../assets/images/Find-Job.jpg';
 import { easeOut, motion } from "framer-motion";
 import { useContext } from 'react';
 import { FaLocationArrow, FaSearch } from 'react-icons/fa';
@@ -11,9 +10,10 @@ const Banner = () => {
     const { setInput, setLocation, input, location,formHandler } = useContext(JobContext)
  
     return (
+        
         <div className='flex flex-col-reverse md:flex-row justify-between my-10 ' >
-            <div className='w-full md:w-[50%] lg:w-[40%] mt-10'>
-                <motion.h2
+            <div className='w-full mt-10 flex flex-col items-center'>
+                <h2
                     animate={{ x: 30, color: 'green', }}
                     transition={{ duration: 2, delay: 1, ease: easeOut, repeat: Infinity }}
                     className='text-2xl md:text-3xl lg:text-5xl mb-5'
@@ -22,12 +22,12 @@ const Banner = () => {
                         animate={{ color: ['#ecff33', '#33ffe3'] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
                     >Find A Job</motion.span> That Suits Your Interest and Skills
-                </motion.h2>
-                <p className='text-3xl text-gray-600'>
+                </h2>
+                <p className='text-3xl text-gray-800 text-center'>
                    Find your dream job now
                 </p>
                 {/*------------ Search Section Start------------ */}
-                <form onSubmit={formHandler} className="flex items-center mt-5 lg:mt-10 border border-gray-400 rounded-md overflow-hidden x">
+                <form onSubmit={formHandler} className="shadow-2xl flex items-center mt-5 lg:mt-10 border  border-gray-400 rounded-full overflow-hidden px-5">
                     <div className="pl-3 pr-2">
                         <FaSearch />
                     </div>
@@ -39,13 +39,13 @@ const Banner = () => {
                 </form>
                 {/*------------ Search Section End------------ */}
             </div>
-            <div className='md:w-[40%] lg:w-1/2  mt-10 lg:mt-0'>
+            {/* <div className='md:w-[40%] lg:w-1/2  mt-10 lg:mt-0'>
                 <img
                     src={heroImage}
                     alt="Person finding job"
                     className='w-full md:h-[250px] lg:h-auto object-cover'
                 />
-            </div>
+            </div> */}
         </div>
     );
 };

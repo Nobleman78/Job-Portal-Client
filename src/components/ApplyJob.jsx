@@ -1,16 +1,17 @@
-import React, { useContext, useState } from 'react';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import AuthContext from '../Context/Authcontext';
 import { IoMdArrowBack } from 'react-icons/io';
 
 const ApplyJob = () => {
- 
+
     const { id } = useParams();
     const { user } = useContext(AuthContext);
     const [fileUrl, setFileUrl] = useState(null);
     const [fileName, setFileName] = useState('');
     const [showURL, setShowURL] = useState(true);
     const navigate = useNavigate()
+    const location = useLocation();
 
     // Default form data
     const defaultFormData = {
@@ -64,9 +65,7 @@ const ApplyJob = () => {
 
     const submitJobApplication = (e) => {
         e.preventDefault();
-
         const form = e.target;
-
         const name = form.name.value;
         const email = form.email.value;
         const phoneNumber = form.number.value;
@@ -75,7 +74,7 @@ const ApplyJob = () => {
         const workPlaceType = form.workplaceType.value;
         const type = form.type.value;
 
-       /*----------Send Data To The Server-------------*/
+        /*----------Send Data To The Server-------------*/
         const jobApplication = {
             job_id: id,
             applicant_email: user.email,
@@ -93,14 +92,14 @@ const ApplyJob = () => {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(jobApplication)
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.insertedId){
-                alert('Your Data Have Been Saved To Database')
-            }
-        });
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    alert('Your Data Have Been Saved To Database')
+                }
+            });
 
-     
+
         form.reset();
         setFormData(defaultFormData);
         setFileUrl(null);
@@ -108,12 +107,17 @@ const ApplyJob = () => {
         setShowURL(false);
         navigate('/dashboard')
     };
+    useEffect(() => {
+        if (!user) {
+            navigate('/login', { replace: true, state: { from: location } });
+        }
+    }, [user, navigate, location]);
 
     return (
         <div className='sm:max-w-7xl mx-auto px-2 mt-10'>
-             <button onClick={()=>navigate(-1)} className="mt-5 p-2 transition-all duration-300 ease-in-out bg-gray-100  hover:bg-gray-200 rounded-full ">
-                            <IoMdArrowBack className=" text-gray-700 hover:text-blue-600 w-6 h-6 "/>
-                        </button>
+            <button onClick={() => navigate(-1)} className="mt-5 p-2 transition-all duration-300 ease-in-out bg-gray-100  hover:bg-gray-200 rounded-full ">
+                <IoMdArrowBack className=" text-gray-700 hover:text-blue-600 w-6 h-6 " />
+            </button>
             <form onSubmit={submitJobApplication} className='shadow-xl w-2xl mx-auto px-10 py-10 rounded-2xl'>
                 <div className='flex flex-col mb-2 gap-2'>
                     <label>Full Name:</label>
@@ -178,13 +182,12 @@ const ApplyJob = () => {
                 <button
                     type="submit"
                     disabled={!verifyForm()}
-                    className={`bg-blue-600 px-4 py-2 w-full text-white mt-4 rounded-full ${verifyForm() ? 'cursor-pointer' : 'opacity-50 cursor-not-allowed'}`}
-                >
+                    className={`bg-blue-600 px-4 py-2 w-full text-white mt-4 rounded-full ${verifyForm() ? 'cursor-pointer' : 'opacity-50 cursor-not-allowed'}`}>
                     Submit Application
                 </button>
             </form>
         </div>
-    );
+    )
 };
 
 export default ApplyJob;

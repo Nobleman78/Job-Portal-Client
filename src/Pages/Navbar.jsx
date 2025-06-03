@@ -14,7 +14,6 @@ const Navbar = () => {
     const [menu, setMenu] = useState('menu');
     const [openProfile, setOpenProfile] = useState(false);
     const [open, setOpen] = useState(false);
-    const [isJobHovered, setIsJobHovered] = useState(false);
     const [isCompanyHoverd,setIsCompanyHoverd] = useState(false)
     const [isServiceHoverd,setIsServiceHoverd] = useState(false)
 
@@ -42,8 +41,7 @@ const Navbar = () => {
                 </NavLink>
 
                 <div className="relative"
-                    onMouseEnter={() => setIsJobHovered(true)}
-                    onMouseLeave={() => setIsJobHovered(false)}>
+                    >
                     <NavLink
                         to='/findjob'
                         className='flex flex-col items-center gap-1'
@@ -52,7 +50,7 @@ const Navbar = () => {
                         <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
                     </NavLink>
 
-                    {isJobHovered && (
+                    {/* {isJobHovered && (
                         <div className='absolute top-full left-1/2 w-max  transform -translate-x-1/2  bg-white rounded-xl  px-6 py-10 flex gap-10 z-50 '
                             onMouseEnter={() => setIsJobHovered(true)}
                             onMouseLeave={() => setIsJobHovered(false)}>
@@ -91,7 +89,7 @@ const Navbar = () => {
                                 </ul>
                             </div>
                         </div>
-                    )}
+                    )} */}
                 </div>
                <div className="relative"
                     onMouseEnter={() => setIsCompanyHoverd(true)}

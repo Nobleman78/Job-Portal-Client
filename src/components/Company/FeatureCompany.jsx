@@ -43,7 +43,7 @@ const cards = [
     },
     {
         logo: 'https://www.rongdhanugroup.com/static/media/BrandLogo.24f5619616b73e7505d92dadd08bdd17.svg',
-        title: 'Rangdhanu',
+        title: 'Rongdhanu',
         ratings: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
         numberOfRatings: 4.0,
         reviewText: '600+ Reviews',
@@ -93,7 +93,7 @@ const FeatureCompany = () => {
     };
 
     return (
-        <div className='mt-10'>
+        <div className='mt-10 px-3'>
             <h2 className='text-4xl text-center text-gray-800 font-semibold'>Features Company Actively Hireing</h2>
             <Slider {...sliderSettings}>
                 {cards.map((card, index) => (

@@ -10,6 +10,7 @@ const JobProvider = ({ children }) => {
     const [jobs, setJobs] = useState([]);
     const [loadingData, setLoadingData] = useState(true);
     const navigate = useNavigate();
+    const [company,setCompany] = useState([])
     const [filterKey, setFilterKey] = useState('')
     const [filterMode, setFilterMode] = useState(null); // "search" or "category"
 
@@ -17,6 +18,10 @@ const JobProvider = ({ children }) => {
         axios.get('http://localhost:3000/jobs')
             .then(res => setJobs(res.data))
     }, []);
+    useEffect(() => {
+        axios.get('http://localhost:3000/companies')
+            .then(res => setCompany(res.data))
+    })
 
     const formHandler = (e) => {
         e.preventDefault();
@@ -63,7 +68,7 @@ const JobProvider = ({ children }) => {
         setLoadingData,
         formHandler,
         handleOnClick
-        , filterMode, setFilterMode, setFilterKey
+        , filterMode, setFilterMode, setFilterKey,company
 
     };
 

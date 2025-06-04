@@ -27,7 +27,7 @@ const NextArrow = ({ onClick }) => (
     <button
         onClick={onClick}
         className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition"
-        
+
     >
         <GrFormNext className="text-xl text-gray-600" />
     </button>
@@ -37,7 +37,7 @@ const PrevArrow = ({ onClick }) => (
     <button
         onClick={onClick}
         className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition"
-        
+
     >
         <GrFormPrevious className="text-xl text-gray-600" />
     </button>
@@ -99,31 +99,33 @@ const TopCompany = () => {
             images: [EducationOne, EducationTwo, EducationThree]
         }
     ];
-   
+
     return (
-        <div className="max-w-7xl mx-auto p-6 relative mt-20">
-            <h1 className="text-4xl font-semibold text-gray-800 mb-8 text-center">Top companies hiring now</h1>
-            <div className="mb-10 relative">
-                <Slider {...sliderSettings}>
-                    {cards.map((card, index) => (
-                        <div key={index} className="px-2 "> {/* This adds space between slides */}
-                            <div onClick={() => {setTopJobKeyword(card.title),navigate(`/top-companies-job/${card.title}`),scrollTo(0,0)}} className="cursor-pointer border border-gray-200 px-4 py-4 rounded-lg bg-white overflow-hidden transition-shadow h-full hover:scale-105 ">
-                                <h2 className='text-lg font-semibold mb-2'>{card.title}</h2>
-                                <p className='text-gray-600 mb-3'>{card.text}</p>
-                                <div className='flex items-center gap-3'>
-                                    {card.images.map((img, imgIndex) => (
-                                        <img
-                                            key={imgIndex}
-                                            className='w-12 h-8 object-contain'
-                                            src={img}
-                                            alt=''
-                                        />
-                                    ))}
+        <div className='bg-gradient-to-b from-gray-50 to-rose-50'>
+            <div className="max-w-7xl mx-auto p-6 relative mt-20">
+                <h1 className="text-4xl font-semibold text-gray-800 mb-8 text-center">Top companies hiring now</h1>
+                <div className="mb-10 relative">
+                    <Slider {...sliderSettings}>
+                        {cards.map((card, index) => (
+                            <div key={index} className="px-2 "> {/* This adds space between slides */}
+                                <div onClick={() => { setTopJobKeyword(card.title), navigate(`/top-companies-job/${card.title}`), scrollTo(0, 0) }} className="cursor-pointer border border-gray-200 px-4 py-4 rounded-lg bg-white overflow-hidden transition-shadow h-full hover:scale-105 ">
+                                    <h2 className='text-lg font-semibold mb-2'>{card.title}</h2>
+                                    <p className='text-gray-600 mb-3'>{card.text}</p>
+                                    <div className='flex items-center gap-3'>
+                                        {card.images.map((img, imgIndex) => (
+                                            <img
+                                                key={imgIndex}
+                                                className='w-12 h-8 object-contain'
+                                                src={img}
+                                                alt=''
+                                            />
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </Slider>
+                        ))}
+                    </Slider>
+                </div>
             </div>
         </div>
     )

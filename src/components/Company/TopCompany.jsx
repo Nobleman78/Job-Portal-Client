@@ -27,7 +27,7 @@ const NextArrow = ({ onClick }) => (
     <button
         onClick={onClick}
         className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition"
-        aria-label="Next"
+        
     >
         <GrFormNext className="text-xl text-gray-600" />
     </button>
@@ -37,13 +37,13 @@ const PrevArrow = ({ onClick }) => (
     <button
         onClick={onClick}
         className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition"
-        aria-label="Previous"
+        
     >
         <GrFormPrevious className="text-xl text-gray-600" />
     </button>
 );
 
-const Company = () => {
+const TopCompany = () => {
     const { setTopJobKeyword } = useContext(TopCompanyJobsContext)
     const navigate = useNavigate()
     const sliderSettings = {
@@ -106,8 +106,8 @@ const Company = () => {
             <div className="mb-10 relative">
                 <Slider {...sliderSettings}>
                     {cards.map((card, index) => (
-                        <div key={index} className="px-2"> {/* This adds space between slides */}
-                            <div onClick={() => {setTopJobKeyword(card.title),navigate(`/top-companies-job/${card.title}`),scrollTo(0,0)}} className="cursor-pointer border border-gray-200 px-4 py-4 rounded-lg bg-white overflow-hidden transition-shadow h-full ">
+                        <div key={index} className="px-2 "> {/* This adds space between slides */}
+                            <div onClick={() => {setTopJobKeyword(card.title),navigate(`/top-companies-job/${card.title}`),scrollTo(0,0)}} className="cursor-pointer border border-gray-200 px-4 py-4 rounded-lg bg-white overflow-hidden transition-shadow h-full hover:scale-105 ">
                                 <h2 className='text-lg font-semibold mb-2'>{card.title}</h2>
                                 <p className='text-gray-600 mb-3'>{card.text}</p>
                                 <div className='flex items-center gap-3'>
@@ -128,4 +128,4 @@ const Company = () => {
         </div>
     )
 }
-export default Company
+export default TopCompany

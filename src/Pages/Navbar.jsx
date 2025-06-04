@@ -97,7 +97,7 @@ const Navbar = () => {
                     <NavLink
                         to='/companies'
                         className='flex flex-col items-center gap-1'
-                        onClick={() => scrollTo(0, 0)}>
+                        onClick={() => {scrollTo(0, 0),setIsCompanyHoverd(false)}}>
                         <p>COMPANY</p>
                         <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
                     </NavLink>
@@ -149,7 +149,7 @@ const Navbar = () => {
                     <NavLink
                         to='/services'
                         className='flex flex-col items-center gap-1'
-                        onClick={() => scrollTo(0, 0)}>
+                        onClick={() => {scrollTo(0, 0),setIsServiceHoverd(false)}}>
                         <p>SERVICES</p>
                         <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
                     </NavLink>

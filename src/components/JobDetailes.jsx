@@ -45,7 +45,7 @@ const JobDetails = () => {
                         <Link to={`/applyJob/${job._id}`}>
                             <button className='bg-blue-500 px-4 py-1 mt-5 rounded cursor-pointer text-white'>Apply Now</button>
                         </Link>
-                        <button onClick={() => setSeeMore(!seeMore)} className='ms-2 hover:text-blue-500 cursor-pointer underline'>See More</button>
+                        <button onClick={() => setSeeMore(!seeMore)} className='ms-2 hover:text-blue-500 cursor-pointer underline'>See Job Details</button>
                         {
                             seeMore && <div className='border rounded-2xl px-4 py-2 mt-2 text-lg '>
                                 <p>Description : <span className='font-semibold'>{job.description}</span></p>

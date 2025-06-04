@@ -1,6 +1,7 @@
 import React from 'react';
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr';
 import Slider from 'react-slick';
+import { useNavigate } from 'react-router-dom';
 
 const NextArrow = ({ onClick }) => (
     <button onClick={onClick} className='absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 '>
@@ -17,49 +18,54 @@ const PrevArrow = ({ onClick }) => (
 
 const cards = [
     {
-        logo: 'https://img.naukimg.com/logo_images/groups/v2/4702913.gif',
-        title: 'Jio',
+        logo: 'https://www.robi.com.bd/_next/static/media/robi-logo-2.d08ae93d.svg',
+        title: 'Robi',
         ratings: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
         numberOfRatings: 4.0,
         reviewText: '600+ Reviews',
         descp: 'True 5g Provider'
     },
     {
-        logo: 'https://img.naukimg.com/logo_images/groups/v2/3835862.gif',
-        title: 'Jio',
+        logo: 'https://media.licdn.com/dms/image/v2/C510BAQGhLfXPZtoQQQ/company-logo_200_200/company-logo_200_200/0/1631303719187?e=2147483647&v=beta&t=mGtLv24hFqc13UCFHXJUxT-Dm0mekQtxBqpGbiUvAj0',
+        title: 'Basundhara',
         ratings: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
-        numberOfRatings: 4.0,
-        reviewText: '600+ Reviews',
-        descp: 'True 5g Provider'
+        numberOfRatings: 5.0,
+        reviewText: '400+ Reviews',
+        descp: 'Real Estate Company'
     },
     {
-        logo: 'https://img.naukimg.com/logo_images/groups/v2/315118.gif',
-        title: 'Jio',
+        logo: 'https://jamunagroup.com.bd/images/logo/1662050814-company-logo.png',
+        title: 'Jamuna',
         ratings: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
         numberOfRatings: 4.0,
         reviewText: '600+ Reviews',
-        descp: 'True 5g Provider'
+        descp: 'Real Estate Company'
     },
     {
-        logo: 'https://img.naukimg.com/logo_images/groups/v2/21746.gif',
-        title: 'Jio',
+        logo: 'https://www.rongdhanugroup.com/static/media/BrandLogo.24f5619616b73e7505d92dadd08bdd17.svg',
+        title: 'Rangdhanu',
         ratings: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
         numberOfRatings: 4.0,
         reviewText: '600+ Reviews',
-        descp: 'True 5g Provider'
+        descp: 'Largest Conglomerates'
     },
     {
-        logo: 'https://img.naukimg.com/logo_images/groups/v2/2095704.gif',
-        title: 'Jio',
+        logo: 'https://cdn.10minuteschool.com/images/svg/10mslogo-svg.svg',
+        title: '10 Minutes School',
         ratings: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
         numberOfRatings: 4.0,
-        reviewText: '600+ Reviews',
-        descp: 'True 5g Provider'
+        reviewText: '1000+ Reviews',
+        descp: 'Largest Educational Platform'
     },
 
 ]
 
 const FeatureCompany = () => {
+    const navigate = useNavigate();
+
+    const handleCardClick = (title) => {
+        navigate(`/featurescompanydetails/${title}`); // Navigate to company details page
+    };
 
     const sliderSettings = {
         dots: true,
@@ -85,13 +91,14 @@ const FeatureCompany = () => {
             }
         ]
     };
+
     return (
         <div className='mt-10'>
             <h2 className='text-4xl text-center text-gray-800 font-semibold'>Features Company Actively Hireing</h2>
             <Slider {...sliderSettings}>
                 {cards.map((card, index) => (
-                    <div key={index} className="px-2 mt-10 " > 
-                        <div className="cursor-pointer border border-gray-200 px-4 py-4 rounded-lg bg-white hover:shadow-2xl overflow-hidden transition-shadow h-full flex flex-col items-center justify-center gap-4">
+                    <div key={index} className="px-2 mt-10 " >
+                        <div onClick={() => { handleCardClick(card.title), scrollTo(0, 0) }} className="cursor-pointer border border-gray-200 px-4 py-4 rounded-lg bg-white hover:shadow-2xl overflow-hidden transition-shadow h-full flex flex-col items-center justify-center gap-4">
                             <img className='w-30 h-10' src={card.logo} alt="" />
                             <div className='flex flex-col items-center justify-center border px-4 py-2 rounded-xl border-rose-100 bg-rose-100'>
                                 <h2 className='text-lg font-semibold mb-2'>{card.title}</h2>

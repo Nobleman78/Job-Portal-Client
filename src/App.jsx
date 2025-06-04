@@ -17,6 +17,7 @@ import AdminHome from './components/Home/AdminHome'
 import Companies from './components/Company/Companies'
 import Services from './components/Service/Services'
 import TopCompanyJobs from './components/Company/TopCompanyJobs'
+import FeatureCompanyDetails from './components/CompanyDetailes/FeatureCompanyDetails'
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path='/dashboard/myApplications' element={<MyApplications />} />
         </Route>
         <Route path='/applyJob/:id' element={<ApplyJob />}></Route>
+        <Route path='/featurescompanydetails/:title' element={<FeatureCompanyDetails/>}></Route>
 
 
       </Routes>

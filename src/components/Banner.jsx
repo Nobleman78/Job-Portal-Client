@@ -27,7 +27,7 @@ const Banner = () => {
                    Find your dream job now
                 </p>
                 {/*------------ Search Section Start------------ */}
-                <form onSubmit={formHandler} className="shadow-2xl flex items-center mt-5 lg:mt-10 border  border-gray-400 rounded-full overflow-hidden px-5">
+                <form onSubmit={formHandler} className="shadow-2xl flex items-center mt-5 lg:mt-10 border border-gray-200 rounded-full overflow-hidden px-5">
                     <div className="pl-3 pr-2">
                         <FaSearch />
                     </div>

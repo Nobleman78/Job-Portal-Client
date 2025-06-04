@@ -13,6 +13,10 @@ const JobProvider = ({ children }) => {
     const [filterKey, setFilterKey] = useState('')
     const [filterMode, setFilterMode] = useState(null); // "search" or "category"
 
+    useEffect(() => {
+        axios.get('http://localhost:3000/jobs')
+            .then(res => setJobs(res.data))
+    }, []);
 
     const formHandler = (e) => {
         e.preventDefault();
@@ -20,19 +24,12 @@ const JobProvider = ({ children }) => {
         setFilterMode('search')
         setLoadingData(false);
     };
-
-    useEffect(() => {
-        axios.get('http://localhost:3000/jobs')
-            .then(res => setJobs(res.data))
-    }, []);
-
     useEffect(() => {
         const filtered = jobs.filter(job => {
             const titleMatch = input ? job.title?.toLowerCase().includes(input.toLowerCase()) : true;
             const locationMatch = location ? job.location?.toLowerCase().includes(location.toLowerCase()) : true;
             return titleMatch && locationMatch;
         });
-
         setFilterJobs(filtered);
     }, [input, location, jobs]);
 
@@ -42,17 +39,17 @@ const JobProvider = ({ children }) => {
         setFilterKey(category)
         navigate('/findjob')
         setFilterMode('category')
+        setLoadingData(false);
     }
+    useEffect(() => {
+        const filteredByTitle = jobs.filter(job => {
+            const title = job.title.toLowerCase();
+            const keywords = filterKey.toLocaleLowerCase().split(' ')
+            return keywords.some(keyword => title.includes(keyword))
+        })
+        setFilterJobs(filteredByTitle)
+    }, [filterKey, jobs])
 
-    const filtered = filterJobs.filter(job => {
-        const title = job.title.toLowerCase();
-        const keywords = filterKey.toLocaleLowerCase().split(' ')
-        return keywords.some(keyword => title.includes(keyword))
-    })
-
-    // This is for location based filter for jobs
-    const [joblocation, setJobLocation] = useState('')
-    console.log(joblocation)
 
     const value = {
         input,
@@ -66,7 +63,8 @@ const JobProvider = ({ children }) => {
         setLoadingData,
         formHandler,
         handleOnClick
-        , filtered,filterMode,setFilterMode,setFilterKey,setJobLocation
+        , filterMode, setFilterMode, setFilterKey
+
     };
 
     return (

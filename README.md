@@ -1,12 +1,32 @@
-# React + Vite
+# Job-Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple Online Job portal ffering a comprehensive platform for job search, recruitment, and career management.
 
-Currently, two official plugins are available:
+# Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🧑‍💼 Explore Job Opportunities across various sectors and roles.
+🏷️ Categorized by industry, skill, location, and experience level.
+🔍 Advanced Search Filters to help users target relevant jobs easily.
+🔔 Custom Job Alerts – personalize alert frequency and criteria.
+🔐 User Authentication – seamless login/registration using Firebase.
+📄 Job Application System – apply with a single click and track applications.
 
-## Expanding the ESLint configuration
+# Tech Stack
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Frontend: React.js + Tailwind CSS
+Backend: Node.js + Express.js
+Database: MongoDB
+Authentication: Firebase
+
+# Libraries & Tools Used
+
+react-icons – for beautiful iconography ---- https://react-icons.github.io/react-icons/
+react-router-dom – for smooth client-side routing -------------npm install react-router-dom npm install localforage match-sorter sort-by 
+@tanstack/react-query – efficient server state management ------ npm i @tanstack/react-query
+react-helmet – dynamic document head management ----- npm i react-helmet-async
+framer-motion – elegant animations-----------npm i framer-motion
+lottie-react – animated illustrations --------------npm i lottie-react
+react-slick – responsive carousels & sliders -------- npm i react-slick
+
+
+

@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 
 const JobFeatures = ({ job }) => {
     const {_id, title, company_logo, location, salaryRange } = job
-
-
     return (
         <div>
             <div className='border border-gray-300 px-5 py-5'>
@@ -27,7 +25,7 @@ const JobFeatures = ({ job }) => {
                             <p className='bg-green-200 text-green-500 px-4 py-1 rounded-xl text-sm' >Private</p>
                             <p className='bg-orange-200 text-orange-500 px-4 py-1 rounded-xl text-sm' >Urgent</p>
                             <Link to={`/jobs/${_id}`}>
-                                <button className='px-4 py-1 bg-blue-500 rounded text-white cursor-pointer'>Apply</button>
+                                <button onClick={()=>scrollTo(0,0)} className='px-4 py-1 bg-blue-500 rounded text-white cursor-pointer'>Apply</button>
                             </Link>
                         </div>
                     </div>

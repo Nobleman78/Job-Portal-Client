@@ -1,27 +1,19 @@
 
-import React, { useEffect, useState } from 'react';
-import { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import TopCompanyJobsContext from '../Context/TopCompanyJobs';
 import { IoMdArrowBack } from 'react-icons/io';
+import JobContext from '../Context/Jobcontext';
 
 const JobDetails = () => {
-    const { topJobs } = useContext(TopCompanyJobsContext)
-    console.log(topJobs)
-    const [jobs, setJobs] = useState([]);
+    const {jobs} = useContext(JobContext)
     const { id } = useParams();
+    // console.log(id)
     const [seeMore, setSeeMore] = useState(false);
     const navigate = useNavigate()
-
-    useEffect(() => {
-        fetch(`http://localhost:3000/jobs`)
-            .then(res => res.json())
-            .then(data => setJobs(data))
-    }, []);
-
-
     const job = jobs.find(job => job._id === id);
-    const topJob = topJobs.find(job => job._id === id)
+    // console.log(job)
+
 
 
     /*
@@ -34,7 +26,7 @@ const JobDetails = () => {
                 <IoMdArrowBack className="text-gray-700 hover:text-blue-600 w-6 h-6 " />
             </button>
             {
-                job || topJob ?
+                job  ?
                     <div className='sm:max-w-7xl mx-auto px-2 mt-10  '>
                         <h2 className='text-xl font-semibold'>Job Details for {job.title}</h2>
                         <div className='flex flex-col mt-2'>

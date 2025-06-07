@@ -6,8 +6,9 @@ const TopcompanyJobsProvider = ({ children }) => {
     const [topJobKeyword, setTopJobKeyword] = useState('')
     const [loading,setLoading] = useState(true)
     console.log(topJobKeyword)
+    
     useEffect(() => {
-        axios.get('http://localhost:3000/top-companies')
+        axios.get('http://localhost:3000/jobs')
             .then(res => setTopJobs(res.data))
 
     }, [])
@@ -16,7 +17,7 @@ const TopcompanyJobsProvider = ({ children }) => {
         const keywords = topJobKeyword.toLowerCase().split(' ')
         return keywords.some(keyword => category.includes(keyword))
     })
-    console.log(filterdJob)
+
     const value = {
         topJobs, setTopJobKeyword, filterdJob,loading,setLoading
     }

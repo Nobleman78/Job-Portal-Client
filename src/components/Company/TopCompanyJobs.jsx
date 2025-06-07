@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 import TopCompanyJobsContext from '../../Context/TopCompanyJobs';
 import { useEffect } from 'react';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from 'react-icons/io';
+import JobContext from '../../Context/Jobcontext';
 
 const TopCompanyJobs = () => {
-    const { filterdJob, loading, setLoading } = useContext(TopCompanyJobsContext);
+    const {filterdJob,loading, setLoading } = useContext(TopCompanyJobsContext);
     const navigate = useNavigate()
+   
     useEffect(() => {
         setLoading(true)
         const timer = setTimeout(() => {
@@ -29,24 +31,24 @@ const TopCompanyJobs = () => {
             {filterdJob.map((job) => (
                 <div key={job._id} className="mb-10 p-6 bg-white rounded-lg shadow-md">
                     <div key={job._id} className="space-y-6">
-                        {job.companies.map((company) => (
-                            <div key={company._id} className=" p-4 rounded-md bg-gray-100">
-                                <h3 className="text-lg font-semibold mb-3 text-gray-800">{company.name}</h3>
+                    
+                            <div className=" p-4 rounded-md bg-gray-100">
+                                <h3 className="text-lg font-semibold mb-3 text-gray-800">{job.title}</h3>
                                 <div className="space-y-3">
-                                    {company.jobs.map((jobItem, index) => (
-                                        <div key={index} className="p-3 bg-white rounded shadow-sm flex flex-col gap-1" >
-                                            <span className="font-semibold text-blue-600">{jobItem.title}</span>
-                                            <span className="text-gray-600 text-sm">{jobItem.location}</span>
-                                            <span className="text-green-600 font-medium">{jobItem.salary}</span>
-                                            <span className="text-gray-500 italic text-xs">{jobItem.type}</span>
+                                   
+                                        <div className="p-3 bg-white rounded shadow-sm flex flex-col gap-1" >
+                                            <span className="font-semibold text-blue-600">{job.title}</span>
+                                            <span className="text-gray-600 text-sm">{job.location}</span>
+                                            <span className="text-green-600 font-medium">{job.salary}</span>
+                                            <span className="text-gray-500 italic text-xs">{job.type}</span>
                                             <Link to={`/jobs/${job._id}`}>
-                                                <button className='bg-blue-500 py-1 text-white rounded w-30 cursor-pointer'>Apply</button>
+                                                <button onClick={() => scrollTo(0, 0)} className='px-4 py-1 bg-blue-500 rounded text-white cursor-pointer'>Apply</button>
                                             </Link>
                                         </div>
-                                    ))}
+                                   
                                 </div>
                             </div>
-                        ))}
+                      
                     </div>
                 </div>
             ))}

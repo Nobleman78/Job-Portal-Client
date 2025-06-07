@@ -27,7 +27,7 @@ const cards = [
     },
     {
         logo: 'https://media.licdn.com/dms/image/v2/C510BAQGhLfXPZtoQQQ/company-logo_200_200/company-logo_200_200/0/1631303719187?e=2147483647&v=beta&t=mGtLv24hFqc13UCFHXJUxT-Dm0mekQtxBqpGbiUvAj0',
-        title: 'Basundhara',
+        title: 'Bashundhara',
         ratings: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
         numberOfRatings: 5.0,
         reviewText: '400+ Reviews',

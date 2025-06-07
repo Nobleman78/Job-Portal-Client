@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { RiMenu2Line } from "react-icons/ri";
 import AuthContext from '../Context/Authcontext';
 import { FaUser } from "react-icons/fa";
 import { IoLogOutOutline } from "react-icons/io5";
 import { MdModeEditOutline } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
+import { IoBookmarksSharp } from "react-icons/io5";
 import axios from 'axios';
 
 const Navbar = () => {
@@ -16,6 +17,7 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [isCompanyHoverd,setIsCompanyHoverd] = useState(false)
     const [isServiceHoverd,setIsServiceHoverd] = useState(false)
+    const navigate = useNavigate()
 
 
     const handleSignOut = () => {
@@ -218,13 +220,16 @@ const Navbar = () => {
                 }
                 {
                     showUserInfo && openProfile &&
-                    <div className='w-60 h-40 shadow-xl absolute bg-white top-10 right-0 border-t-4 border-green-600 z-20 rounded-b'>
+                    <div className='w-60 h-auto shadow-xl absolute bg-white top-10 right-0 border-t-4 border-green-600 z-20 rounded-b'>
                         <ul className='flex flex-col items-start px-5 gap-4 py-4 cursor-pointer'>
-                            <li onClick={() => setOpenProfile(false)} className='flex items-center gap-3 w-full hover:text-blue-600'>
+                            <li onClick={() => {setOpenProfile(false),navigate('/myprofile'),scrollTo(0,0)}} className='flex items-center gap-3 w-full hover:text-blue-600'>
                                 <FaUser /> My Profile
                             </li>
                             <li onClick={() => setOpenProfile(false)} className='flex items-center gap-3 w-full hover:text-blue-600'>
                                 <MdModeEditOutline /> Edit Profile
+                            </li>
+                            <li onClick={() => {setOpenProfile(false),navigate('/mybookmark'),scrollTo(0,0)}} className='flex items-center gap-3 w-full hover:text-blue-600'>
+                                <IoBookmarksSharp /> My BookMarks
                             </li>
                             <li
                                 onClick={() => { setOpenProfile(false); handleSignOut() }}

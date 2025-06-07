@@ -107,6 +107,7 @@ const Findjob = () => {
                                     <Link to={`/jobs/${job._id}`}>
                                         <button className='px-4 py-1 bg-blue-500 rounded text-white text-xs lg:text-sm cursor-pointer'>Apply</button>
                                     </Link>
+                                    <button className='bg-green-600 px-4 py-1 text-white text-sm rounded cursor-pointer'>BookMark</button>
                                 </div>
                             </div>
                         </div>

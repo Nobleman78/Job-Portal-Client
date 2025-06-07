@@ -18,6 +18,14 @@ import Companies from './components/Company/Companies'
 import Services from './components/Service/Services'
 import TopCompanyJobs from './components/Company/TopCompanyJobs'
 import FeatureCompanyDetails from './components/CompanyDetailes/FeatureCompanyDetails'
+import MyProfile from './components/ProfileInfo/MyProfile'
+import Bookmarks from './components/ProfileInfo/Bookmarks'
+import Profile from './components/ProfileInfo/Profile'
+import Userinfo from './components/ProfileInfo/Userinfo'
+import JobProfile from './components/ProfileInfo/JobProfile'
+import Address from './components/ProfileInfo/Address'
+import Skills from './components/ProfileInfo/Skills'
+import JobExp from './components/ProfileInfo/JobExp'
 
 function App() {
   return (
@@ -26,6 +34,17 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='*' element={<NotFound />}></Route>
+        <Route path='/myprofile' element={<MyProfile />}>
+          <Route path='/myprofile/profile' element={<Profile />}></Route>
+          <Route path='/myprofile/userinfo' element={<Userinfo />}></Route>
+          <Route path='/myprofile/jobprofile' element={<JobProfile />}></Route>
+          <Route path='/myprofile/address' element={<Address />}></Route>
+          <Route path='/myprofile/skills' element={<Skills />}></Route>
+          <Route path='/myprofile/jobexp' element={<JobExp />}></Route>
+        </Route>
+        <Route path='/mybookmark' element={<Bookmarks />}></Route>
+
+
         <Route path='/' element={<Home />}></Route>
         <Route path='/jobs/:id' element={<JobDetailes />}></Route>
         <Route path='/login' element={<Login />}></Route>
@@ -41,7 +60,7 @@ function App() {
           <Route path='/dashboard/myApplications' element={<MyApplications />} />
         </Route>
         <Route path='/applyJob/:id' element={<ApplyJob />}></Route>
-        <Route path='/featurescompanydetails/:title' element={<FeatureCompanyDetails/>}></Route>
+        <Route path='/featurescompanydetails/:title' element={<FeatureCompanyDetails />}></Route>
 
 
       </Routes>

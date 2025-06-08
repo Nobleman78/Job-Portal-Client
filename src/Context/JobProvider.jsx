@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import JobContext from './Jobcontext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const JobProvider = ({ children }) => {
     const [input, setInput] = useState('');
+    const [bookMark, setBookMark] = useState([])
     const [location, setLocation] = useState('');
     const [filterJobs, setFilterJobs] = useState([]);
     const [jobs, setJobs] = useState([]);
     const [loadingData, setLoadingData] = useState(true);
     const navigate = useNavigate();
-    const [company,setCompany] = useState([])
+    const [company, setCompany] = useState([])
     const [filterKey, setFilterKey] = useState('')
     const [filterMode, setFilterMode] = useState(null); // "search" or "category"
 
@@ -21,7 +23,7 @@ const JobProvider = ({ children }) => {
     useEffect(() => {
         axios.get('http://localhost:3000/companies')
             .then(res => setCompany(res.data))
-    })
+    }, [])
 
     const formHandler = (e) => {
         e.preventDefault();
@@ -55,6 +57,20 @@ const JobProvider = ({ children }) => {
         setFilterJobs(filteredByTitle)
     }, [filterKey, jobs])
 
+    /*  Add to bookmark */
+
+    const addtoBookMark = (job) => {
+        if (!bookMark.some(b => b._id === job._id)) {
+            setBookMark(prev => [...prev, job]);
+            Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Bookmarked Successfully',
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
+    }
 
     const value = {
         input,
@@ -68,7 +84,7 @@ const JobProvider = ({ children }) => {
         setLoadingData,
         formHandler,
         handleOnClick
-        , filterMode, setFilterMode, setFilterKey,company
+        , filterMode, setFilterMode, setFilterKey, company, addtoBookMark, bookMark
 
     };
 

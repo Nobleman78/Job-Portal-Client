@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import JobContext from '../Context/Jobcontext';
 
 const Findjob = () => {
-    const { filterJobs, loadingData, setLoadingData, filterMode, jobs } = useContext(JobContext);
+    const { filterJobs, loadingData, setLoadingData, filterMode, jobs,addtoBookMark } = useContext(JobContext);
     const [selectedLocations, setSelectedLocations] = useState([]);
 
     useEffect(() => {
@@ -69,7 +69,6 @@ const Findjob = () => {
                     <h3 className='text-lg font-semibold text-blue-800'>Filter by Location</h3>
                     <p className='text-sm text-blue-600'>Select one or more cities</p>
                 </div>
-
                 <ul className='flex flex-col gap-2 cursor-pointer overflow-y-auto pr-2 max-h-[400px]'>
                     {allLocations.map((city, index) => (
                         <div key={index}className={`flex items-center gap-3 border border-blue-200 px-3 py-2 rounded-lg 
@@ -107,7 +106,7 @@ const Findjob = () => {
                                     <Link to={`/jobs/${job._id}`}>
                                         <button className='px-4 py-1 bg-blue-500 rounded text-white text-xs lg:text-sm cursor-pointer'>Apply</button>
                                     </Link>
-                                    <button className='bg-green-600 px-4 py-1 text-white text-sm rounded cursor-pointer'>BookMark</button>
+                                    <button onClick={()=>addtoBookMark(job)} className='bg-green-600 px-4 py-1 text-white text-sm rounded cursor-pointer'>BookMark</button>
                                 </div>
                             </div>
                         </div>

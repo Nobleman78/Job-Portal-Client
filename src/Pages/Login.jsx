@@ -19,7 +19,7 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation()
-    const from = location.state?.from?.pathname
+    const from = location.state?.from?.pathname || '/'
     console.log(from)
 
     const handleLogin = (e) => {
@@ -39,6 +39,7 @@ const Login = () => {
             .then(res => {
                 console.log(res.user)
                 setSuccess(true)
+                navigate('/')
 
             })
             .catch(error => {

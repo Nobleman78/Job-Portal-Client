@@ -35,7 +35,7 @@ function App() {
       <Routes>
         <Route path='*' element={<NotFound />}></Route>
         <Route path='/myprofile' element={<MyProfile />}>
-          <Route path='/myprofile/profile' element={<Profile />}></Route>
+          <Route path='/myprofile/profile'  index element={<Profile />}></Route>
           <Route path='/myprofile/userinfo' element={<Userinfo />}></Route>
           <Route path='/myprofile/jobprofile' element={<JobProfile />}></Route>
           <Route path='/myprofile/address' element={<Address />}></Route>

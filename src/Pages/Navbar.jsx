@@ -222,7 +222,7 @@ const Navbar = () => {
                     showUserInfo && openProfile &&
                     <div className='w-60 h-auto shadow-xl absolute bg-white top-10 right-0 border-t-4 border-green-600 z-20 rounded-b'>
                         <ul className='flex flex-col items-start px-5 gap-4 py-4 cursor-pointer'>
-                            <li onClick={() => {setOpenProfile(false),navigate('/myprofile'),scrollTo(0,0)}} className='flex items-center gap-3 w-full hover:text-blue-600'>
+                            <li onClick={() => {setOpenProfile(false),navigate('/myprofile/profile'),scrollTo(0,0)}} className='flex items-center gap-3 w-full hover:text-blue-600'>
                                 <FaUser /> My Profile
                             </li>
                             <li onClick={() => setOpenProfile(false)} className='flex items-center gap-3 w-full hover:text-blue-600'>

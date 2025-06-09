@@ -36,10 +36,10 @@ const Navbar = () => {
                 <Link to='/'><img className='lg:w-50 w-40 h-8 lg:h-12' src='https://static.naukimg.com/s/0/0/i/naukri-identity/naukri_gnb_logo.svg' alt="Logo" /></Link>
             </div>
 
-            <ul className='hidden sm:flex gap-5 text-sm'>
-                <NavLink onClick={() => scrollTo(0, 0)} to='/' className='flex flex-col items-center gap-1'>
+            <ul className='hidden sm:flex gap-5 text-md sm:items-center '>
+                <NavLink onClick={() => scrollTo(0, 0)} to='/' className='flex flex-col items-center gap-1  '>
                     <p>HOME</p>
-                    <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
+                    {/* <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' /> */}
                 </NavLink>
 
                 <div className="relative"
@@ -49,7 +49,7 @@ const Navbar = () => {
                         className='flex flex-col items-center gap-1'
                         onClick={() => scrollTo(0, 0)}>
                         <p>FIND JOB</p>
-                        <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
+                        {/* <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' /> */}
                     </NavLink>
 
                     {/* {isJobHovered && (
@@ -101,7 +101,7 @@ const Navbar = () => {
                         className='flex flex-col items-center gap-1'
                         onClick={() => {scrollTo(0, 0),setIsCompanyHoverd(false)}}>
                         <p>COMPANY</p>
-                        <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
+                        {/* <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' /> */}
                     </NavLink>
 
                     {isCompanyHoverd && (
@@ -153,7 +153,7 @@ const Navbar = () => {
                         className='flex flex-col items-center gap-1'
                         onClick={() => {scrollTo(0, 0),setIsServiceHoverd(false)}}>
                         <p>SERVICES</p>
-                        <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
+                        {/* <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' /> */}
                     </NavLink>
 
                     {isServiceHoverd && (
@@ -199,7 +199,7 @@ const Navbar = () => {
                 </div>
                 <NavLink onClick={() => scrollTo(0, 0)} to='/dashboard' className='flex flex-col items-center gap-1'>
                     <p>DASHBOARD</p>
-                    <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' />
+                    {/* <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' /> */}
                 </NavLink>
             </ul>
 
@@ -213,8 +213,8 @@ const Navbar = () => {
                             <p className='text-gray-700 font-medium'>{user.email.slice(0, 1).toUpperCase()}</p>
                         </span>
                     ) : (
-                        <NavLink to='/login' className='bg-blue-600 px-4 py-1 rounded-full text-white'>
-                            Sign in
+                        <NavLink to='/login' className='bg-blue-400 px-4 py-2 rounded-md text-md  text-white'>
+                            SIGN IN
                         </NavLink>
                     )
                 }

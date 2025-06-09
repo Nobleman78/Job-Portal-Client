@@ -10,6 +10,7 @@ import DiscoverJobs from '../components/DisCoverJobs/DiscoverJobs';
 import SponsorCompany from '../components/Company/SponsorCompany';
 import Download from '../components/Download/Download';
 import TopCompany from '../components/Company/TopCompany';
+import Overview from '../components/Service/Overview';
 
 const Home = () => {
     const { setInput, setLocation, setFilterKey, setLoadingData, setFilterMode, } = useContext(JobContext);
@@ -23,6 +24,7 @@ const Home = () => {
     return (
         <div className=''>
             <Banner />
+            <Overview/>
             <Jobcategory />
             <Jobs />
             <TopCompany/>

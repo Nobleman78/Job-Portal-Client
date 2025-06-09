@@ -7,8 +7,11 @@ body {
 @import "tailwindcss";
 
 /* @import "tailwindcss"; */
-a.active hr {
-    display: block;
+a.active  {
+    background-color: rgb(113, 169, 243);
+    padding:7px 15px;
+    color:white;
+    border-radius: 5px;
 }
 
 :root {

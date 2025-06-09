@@ -7,10 +7,10 @@ import JobContext from '../Context/Jobcontext';
 
 
 const Banner = () => {
-    const { setInput, setLocation, input, location,formHandler } = useContext(JobContext)
- 
+    const { setInput, setLocation, input, location, formHandler } = useContext(JobContext)
+
     return (
-        
+
         <div className='flex flex-col-reverse md:flex-row justify-between my-10 ' >
             <div className='w-full mt-10 flex flex-col items-center'>
                 <h2
@@ -24,17 +24,21 @@ const Banner = () => {
                     >Find A Job</motion.span> That Suits Your Interest and Skills
                 </h2>
                 <p className='text-3xl text-gray-800 text-center'>
-                   Find your dream job now
+                    Find your dream job now
                 </p>
                 {/*------------ Search Section Start------------ */}
-                <form onSubmit={formHandler} className="shadow-2xl flex items-center mt-5 lg:mt-10 border border-gray-400 rounded-full overflow-hidden px-5">
-                    <div className="pl-3 pr-2">
-                        <FaSearch />
+                <form onSubmit={formHandler} className="shadow-2xl w-4/5 flex gap-3 justify-between items-center mt-5 lg:mt-10  rounded-xl overflow-hidden px-5 py-5">
+                    <div className="flex items-center border border-gray-300 w-1/2 px-2 rounded">
+                        <div className="pl-3 pr-2">
+                            <FaSearch />
+                        </div>
+                        <input onChange={(e) => setInput(e.target.value)} type='text' value={input} placeholder='Job Title' className='w-full py-3 px-4 outline-none' />
                     </div>
-                    <input onChange={(e) => setInput(e.target.value)} type='text' value={input} placeholder='Job Title' className='w-full py-2 px-2 outline-none' />
-                    <div className="h-8 w-px bg-gray-400 mr-2"></div>
-                    <SlLocationPin className='text-6xl' />
-                    <input onChange={(e) => setLocation(e.target.value)} type="text" value={location} placeholder='Your Location' className='py-2 w-30 lg:w-40 px-2 outline-none shadow-none ' />
+                    
+                    <div className="flex items-center border border-gray-300 rounded w-1/2 px-2">
+                        <SlLocationPin className='text-xl' />
+                        <input onChange={(e) => setLocation(e.target.value)} type="text" value={location} placeholder='Your Location' className='py-3 w-full px-4 outline-none shadow-none ' />
+                    </div>
                     <button type='submit' className='px-5 mx-1 py-3 rounded-md bg-blue-600 text-white'>Search</button>
                 </form>
                 {/*------------ Search Section End------------ */}

@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { IoMdArrowBack } from "react-icons/io";
 
 const FeatureCompanyDetails = () => {
     const { title } = useParams();
     const [company, setCompany] = useState([]);
     const [activeButton, setActiveButton] = useState(0)
+    const location = useLocation()
+    console.log(location)
+    const navigate = useNavigate()
+    
 
     const cards = [
         {
@@ -155,7 +160,8 @@ const FeatureCompanyDetails = () => {
     }, [title]);
 
     return (
-        <div>
+        <div className='mt-4'>
+            <button className='border border-gray-200 bg-gray-300 mb-3 mx-3 rounded-full px-3 py-3'  onClick={()=>navigate('/')} ><IoMdArrowBack className='text-xl'/></button>
             {company.map((comp, index) => (
                 <div key={index}>
                     <img className='w-full h-90' src={comp.image} alt="" />

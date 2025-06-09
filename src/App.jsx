@@ -26,6 +26,7 @@ import JobProfile from './components/ProfileInfo/JobProfile'
 import Address from './components/ProfileInfo/Address'
 import Skills from './components/ProfileInfo/Skills'
 import JobExp from './components/ProfileInfo/JobExp'
+import DiscoverjobDetailes from './components/DisCoverJobs/DiscoverjobDetailes'
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
       <Routes>
         <Route path='*' element={<NotFound />}></Route>
         <Route path='/myprofile' element={<MyProfile />}>
-          <Route path='/myprofile/profile'  index element={<Profile />}></Route>
+          <Route path='/myprofile/profile' index element={<Profile />}></Route>
           <Route path='/myprofile/userinfo' element={<Userinfo />}></Route>
           <Route path='/myprofile/jobprofile' element={<JobProfile />}></Route>
           <Route path='/myprofile/address' element={<Address />}></Route>
@@ -61,6 +62,7 @@ function App() {
         </Route>
         <Route path='/applyJob/:id' element={<ApplyJob />}></Route>
         <Route path='/featurescompanydetails/:title' element={<FeatureCompanyDetails />}></Route>
+        <Route path='/discoverjobdetails/:category' element={<DiscoverjobDetailes />}></Route>
 
 
       </Routes>

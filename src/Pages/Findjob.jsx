@@ -1,15 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { IoBagOutline } from "react-icons/io5";
 import { FaLocationPinLock } from 'react-icons/fa6';
 import { IoTimeOutline } from "react-icons/io5";
 import { FaMoneyBill } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom'; // Import useSearchParams
 import JobContext from '../Context/Jobcontext';
 
 const Findjob = () => {
-    const { filterJobs, loadingData, setLoadingData, filterMode, jobs,addtoBookMark } = useContext(JobContext);
-    const [selectedLocations, setSelectedLocations] = useState([]);
+    const { filterJobs, loadingData, setLoadingData, filterMode, jobs, addtoBookMark } = useContext(JobContext);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const selectedLocations = searchParams.getAll('location');
 
+    // Effect to handle loading data (existing logic)
     useEffect(() => {
         setLoadingData(true);
         const timer = setTimeout(() => {
@@ -19,18 +21,21 @@ const Findjob = () => {
     }, [filterJobs, setLoadingData]);
 
     const handleLocationSelect = (city) => {
-        setSelectedLocations(prev => {
-            if (prev.includes(city)) {
-                return prev.filter(location => location !== city)
-
+        setSearchParams(prevSearchParams => {
+            const newSearchParams = new URLSearchParams(prevSearchParams);
+            if (selectedLocations.includes(city)) {
+                newSearchParams.delete('location');
+                selectedLocations.filter(loc => loc !== city).forEach(loc => {
+                    newSearchParams.append('location', loc);
+                });
+            } else {
+                newSearchParams.append('location', city);
             }
-            else {
-                return [...prev, city]
-            }
-        })
+            return newSearchParams;
+        }, { replace: true });
     };
 
-    if (loadingData == true) {
+    if (loadingData === true) {
         return (
             <div className="sm:max-w-7xl mx-auto px-2 flex justify-center items-center h-64">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
@@ -40,6 +45,7 @@ const Findjob = () => {
 
     let finalJobs = [];
 
+    // Your existing filter logic based on filterMode
     if (filterMode === 'category') {
         finalJobs = filterJobs;
     } else if (filterMode === 'search') {
@@ -48,7 +54,7 @@ const Findjob = () => {
         finalJobs = [...jobs];
     }
 
-    // Apply location filter if any locations are selected
+    // Apply location filter if any locations are selected (from URL)
     if (selectedLocations.length > 0) {
         finalJobs = finalJobs.filter(job =>
             selectedLocations.some(location =>
@@ -71,14 +77,18 @@ const Findjob = () => {
                 </div>
                 <ul className='flex flex-col gap-2 cursor-pointer overflow-y-auto pr-2 max-h-[400px]'>
                     {allLocations.map((city, index) => (
-                        <div key={index}className={`flex items-center gap-3 border border-blue-200 px-3 py-2 rounded-lg 
+                        <div key={index}
+                            className={`flex items-center gap-3 border border-blue-200 px-3 py-2 rounded-lg
                                 bg-white/80 hover:bg-blue-50 transition-colors duration-200
-                                ${selectedLocations.includes(city) ? 'bg-blue-100 border-blue-300' : ''}`}>
+                                ${selectedLocations.includes(city) ? 'bg-blue-100 border-blue-300' : ''}`}
+                            onClick={() => handleLocationSelect(city)} 
+                        >
                             <input
                                 type="checkbox"
                                 className='h-4 w-4 text-blue-600 rounded focus:ring-blue-500'
-                                onChange={() => handleLocationSelect(city)}
-                                onClick={(e) => e.stopPropagation()} />
+                                checked={selectedLocations.includes(city)} 
+                                // onChange={() => { }} 
+                            />
                             <label className='text-blue-900 hover:text-blue-700 cursor-pointer'>
                                 {city}
                             </label>
@@ -106,7 +116,7 @@ const Findjob = () => {
                                     <Link to={`/jobs/${job._id}`}>
                                         <button className='px-4 py-1 bg-blue-500 rounded text-white text-xs lg:text-sm cursor-pointer'>Apply</button>
                                     </Link>
-                                    <button onClick={()=>addtoBookMark(job)} className='bg-green-600 px-4 py-1 text-white text-sm rounded cursor-pointer'>BookMark</button>
+                                    <button onClick={() => addtoBookMark(job)} className='bg-green-600 px-4 py-1 text-white text-sm rounded cursor-pointer'>BookMark</button>
                                 </div>
                             </div>
                         </div>

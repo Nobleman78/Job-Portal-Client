@@ -56,6 +56,7 @@ function App() {
         <Route path='/services' element={<Services />}></Route>
         <Route path='/top-companies-job/:title' element={<TopCompanyJobs />}></Route>
         <Route path='/findjob' element={<Findjob />}></Route>
+        <Route path='/findjob/:category' element={<Findjob />}></Route>
         <Route path='/dashboard' element={<Dashboard />}>
           <Route path='/dashboard/home' element={<AdminHome />}></Route>
           <Route path='/dashboard/myApplications' element={<MyApplications />} />

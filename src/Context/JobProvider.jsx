@@ -57,7 +57,7 @@ const JobProvider = ({ children }) => {
 
     const handleOnClick = (category) => {
         setFilterKey(category)
-        navigate('/findjob')
+        navigate(`/findjob/${category}`)
         setFilterMode('category')
         setLoadingData(false);
     }

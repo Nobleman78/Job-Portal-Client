@@ -27,8 +27,7 @@ const Jobcategory = () => {
                                     scrollTo(0, 0);
                                 }}
                                 key={index}
-                                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 p-6 cursor-pointer"
-                            >
+                                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 p-6 cursor-pointer">
                                 <div className="flex items-center gap-5">
                                     <img
                                         className="w-20 h-20 object-cover rounded-xl border border-gray-200"

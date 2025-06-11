@@ -14,7 +14,7 @@ const DiscoverjobDetailes = () => {
         <div className='sm:max-w-7xl mx-auto mt-10'>
             {discoverFilter.map((categoryItem) => (
                 <div key={categoryItem._id}>
-                    <h2 className='text-2xl font-semibold mb-2'>{categoryItem.category}</h2>
+                    <h2 className='text-2xl font-semibold mb-2 text-blue-400'>Category : {categoryItem.category}</h2>
                     <div className='flex flex-col gap-3'>
                         {categoryItem.jobs.map((job) => {
                             const isExpanded = expandedJobId === job._id;
@@ -41,16 +41,21 @@ const DiscoverjobDetailes = () => {
                                     {isExpanded  && (
                                         <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 space-y-3 mt-2">
                                             <div>
-                                                <p className="text-gray-700 font-medium">Description:</p>
+                                                <p className="font-medium text-blue-500 text-xl">Description:</p>
                                                 <p className="text-gray-600">{job.description}</p>
                                             </div>
                                             <div>
-                                                <p className="text-gray-700 font-medium">Requirements:</p>
-                                                <p className="text-gray-600">{job.requirements}</p>
+                                                <p className="text-blue-500  text-xl font-medium">Requirements:</p>
+                                                <p className="text-gray-600 ">{job.requirements.map((item,index)=>(
+                                                    <li key={index}>{item}</li>
+                                                ))}
+                                                   </p>
                                             </div>
                                             <div>
-                                                <p className="text-gray-700 font-medium">Responsibilities:</p>
-                                                <p className="text-gray-600">{job.responsibilities}</p>
+                                                <p className="text-blue-500  text-xl font-medium">Responsibilities:</p>
+                                                <p className="text-gray-600">{job.responsibilities.map((item,index)=>(
+                                                    <li key={index}>{item}</li>
+                                                ))}</p>
                                             </div>
                                         </div>
                                     )}

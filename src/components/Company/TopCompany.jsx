@@ -22,7 +22,7 @@ const PrevArrow = ({ onClick }) => (
 );
 
 const TopCompany = () => {
-    const { setTopJobKeyword } = useContext(TopCompanyJobsContext)
+    const { getKeyword } = useContext(TopCompanyJobsContext)
     const { jobs } = useContext(JobContext)
     const navigate = useNavigate()
 
@@ -70,7 +70,7 @@ const TopCompany = () => {
                         {Object.entries(groupedByCategory).map(([category, jobList], index) => (
                             <div key={index} className="px-2">
                                 <div onClick={() => {
-                                    setTopJobKeyword(category);
+                                    getKeyword(category);
                                     navigate(`/top-companies-job/${jobList[0].title}`);
                                     scrollTo(0, 0);
                                 }}

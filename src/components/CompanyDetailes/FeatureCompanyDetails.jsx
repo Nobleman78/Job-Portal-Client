@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
 
@@ -152,7 +152,7 @@ const FeatureCompanyDetails = () => {
     const button = [
         'OverView', 'Why Join Us', 'Jobs', 'Diversity'
     ]
-    useEffect(() => {
+    useEffect(()=> {
         const filteredCards = cards.filter(card =>
             card.title.toLowerCase().includes(title.toLowerCase())
         );

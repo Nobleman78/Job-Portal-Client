@@ -3,6 +3,8 @@ import Banner from '../components/Banner';
 import Jobcategory from '../components/Jobcategory';
 import Jobs from '../components/Jobs';
 import JobContext from '../Context/Jobcontext';
+
+import JobFeatures from '../components/JobFeatures';
 import FeatureCompany from '../components/Company/FeatureCompany';
 import DiscoverJobs from '../components/DisCoverJobs/DiscoverJobs';
 import SponsorCompany from '../components/Company/SponsorCompany';
@@ -18,7 +20,8 @@ const Home = () => {
         setFilterKey('');
         setFilterMode(null);
         setLoadingData(true);
-        
+        localStorage.removeItem('search-category');
+        localStorage.removeItem('discover-category')
     }, [setFilterKey, setFilterMode, setLoadingData, setInput, setLocation]);
     return (
         <div className=''>

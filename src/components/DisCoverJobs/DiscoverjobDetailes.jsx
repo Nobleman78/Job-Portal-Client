@@ -4,7 +4,7 @@ import JobContext from '../../Context/Jobcontext';
 const DiscoverjobDetailes = () => {
     const { discoverFilter } = useContext(JobContext);
     const [expandedJobId, setExpandedJobId] = useState(null)
-    console.log(discoverFilter)
+    
 
     const toggleJobDetails = (jobId) => {
         setExpandedJobId(prevId => prevId === jobId ? null : jobId);

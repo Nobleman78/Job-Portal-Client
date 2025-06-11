@@ -89,11 +89,21 @@ const JobProvider = ({ children }) => {
         setFilterJobs(filteredByTitle);
     }, [filterKey, jobs]);
 
+
     // Discover job filtering
     const discoverJobHandler = (c) => {
         setDiscoverJobKey(c);
+        localStorage.setItem('discover-category', c)
         navigate(`/discoverjobdetails/${c}`);
     };
+    useEffect(() => {
+        const activeCategory = category || localStorage.getItem('discover-category');
+        if (activeCategory) {
+            setDiscoverJobKey(activeCategory);
+            setLoadingData(false);
+        }
+    }, [category]);
+
 
     useEffect(() => {
         const activeCategory = discoverJobKey || category;
@@ -108,6 +118,7 @@ const JobProvider = ({ children }) => {
             setDiscoverFilter([]);
         }
     }, [roles, discoverJobKey, category]);
+
 
     // Fetch bookmarks if logged in
     useEffect(() => {

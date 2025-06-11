@@ -38,7 +38,7 @@ const DiscoverjobDetailes = () => {
                                         className="text-blue-600 underline hover:text-blue-800 transition-all mt-2">
                                         {isExpanded ? 'Hide Details' : 'See Job Details'}
                                     </button>
-                                    {isExpanded && (
+                                    {isExpanded  && (
                                         <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 space-y-3 mt-2">
                                             <div>
                                                 <p className="text-gray-700 font-medium">Description:</p>

@@ -7,43 +7,48 @@ import AuthContext from './Authcontext';
 
 const JobProvider = ({ children }) => {
     const [input, setInput] = useState('');
-    const [bookMark, setBookMark] = useState([])
+    const [bookMark, setBookMark] = useState([]);
     const [location, setLocation] = useState('');
     const [filterJobs, setFilterJobs] = useState([]);
-    const [discoverFilter, setDiscoverFilter] = useState([])
+    const [discoverFilter, setDiscoverFilter] = useState([]);
     const [jobs, setJobs] = useState([]);
-    const [roles, setRoles] = useState([])
+    const [roles, setRoles] = useState([]);
     const [loadingData, setLoadingData] = useState(true);
-    const [company, setCompany] = useState([])
-    const [filterKey, setFilterKey] = useState('')
+    const [company, setCompany] = useState([]);
+    const [filterKey, setFilterKey] = useState('');
     const [filterMode, setFilterMode] = useState(null);
-    const { user } = useContext(AuthContext)
-    const [discoverJobKey, setDiscoverJobKey] = useState('')
+    const { user } = useContext(AuthContext);
+    const [discoverJobKey, setDiscoverJobKey] = useState('');
     const navigate = useNavigate();
-    const { category } = useParams()
+    const { category } = useParams();
 
-    // Jobs Api Data
+    // Fetch all jobs
     useEffect(() => {
         axios.get('http://localhost:3000/jobs')
-            .then(res => setJobs(res.data))
+            .then(res => setJobs(res.data));
     }, []);
-    // Companies Api Data
+
+    // Fetch all companies
     useEffect(() => {
         axios.get('http://localhost:3000/companies')
-            .then(res => setCompany(res.data))
-    }, [])
-    //  Roles based Jobs Api Data
+            .then(res => setCompany(res.data));
+    }, []);
+
+    // Fetch role-based jobs
     useEffect(() => {
         axios.get('http://localhost:3000/rolebasedjob')
-            .then(res => setRoles(res.data))
-    }, [])
+            .then(res => setRoles(res.data));
+    }, []);
 
+    // Handle form search
     const formHandler = (e) => {
         e.preventDefault();
         navigate('/findjob');
-        setFilterMode('search')
+        setFilterMode('search');
         setLoadingData(false);
     };
+
+    // Filter jobs by input and location
     useEffect(() => {
         const filtered = jobs.filter(job => {
             const titleMatch = input ? job.title?.toLowerCase().includes(input.toLowerCase()) : true;
@@ -53,30 +58,43 @@ const JobProvider = ({ children }) => {
         setFilterJobs(filtered);
     }, [input, location, jobs]);
 
-    //Filter From Available jobs
+    // Handle category click
 
     const handleOnClick = (category) => {
+        localStorage.setItem('search-category', category);
+        navigate(`/findjob/${category}`);
         setFilterKey(category)
-        navigate(`/findjob/${category}`)
-        setFilterMode('category')
+        setFilterMode('category');
         setLoadingData(false);
-    }
+    };
+
+    // Detect category from URL or fallback to localStorage
     useEffect(() => {
+        const activeCategory = category || localStorage.getItem('search-category');
+        if (activeCategory) {
+            setFilterKey(activeCategory);
+            setFilterMode('category');
+            setLoadingData(false);
+        }
+    }, [category]);
+
+    // Filter jobs based on category or search key
+    useEffect(() => {
+        if (!filterKey) return;
         const filteredByTitle = jobs.filter(job => {
             const title = job.title.toLowerCase();
-            const keywords = filterKey.toLocaleLowerCase().split(' ')
-            return keywords.some(keyword => title.includes(keyword))
-        })
-        setFilterJobs(filteredByTitle)
-    }, [filterKey, jobs])
+            const keywords = filterKey.toLowerCase().split(' ');
+            return keywords.some(keyword => title.includes(keyword));
+        });
+        setFilterJobs(filteredByTitle);
+    }, [filterKey, jobs]);
 
-
-    // Discover Job Filter
+    // Discover job filtering
     const discoverJobHandler = (c) => {
-        setDiscoverJobKey(c)
-        navigate(`/discoverjobdetails/${c}`)
+        setDiscoverJobKey(c);
+        navigate(`/discoverjobdetails/${c}`);
+    };
 
-    }
     useEffect(() => {
         const activeCategory = discoverJobKey || category;
         if (activeCategory) {
@@ -87,21 +105,24 @@ const JobProvider = ({ children }) => {
             });
             setDiscoverFilter(filterByCategory);
         } else {
-            setDiscoverFilter([]); 
+            setDiscoverFilter([]);
         }
-    }, [roles, discoverJobKey, category])
+    }, [roles, discoverJobKey, category]);
 
-    /*  Add to bookmark */
+    // Fetch bookmarks if logged in
     useEffect(() => {
         if (user?.email) {
-            fetchData()
+            fetchData();
         }
     }, [user?.email]);
+
     const fetchData = () => {
         axios.get(`http://localhost:3000/bookmarks?email=${user.email}`, { withCredentials: true })
             .then(res => setBookMark(res.data))
             .catch(err => console.error('Failed to fetch bookmarks:', err));
-    }
+    };
+
+    // Add to bookmark
     const addtoBookMark = (job) => {
         if (!user || !user.email) {
             Swal.fire({
@@ -122,6 +143,7 @@ const JobProvider = ({ children }) => {
             });
             return;
         }
+
         axios.post('http://localhost:3000/bookmarks', {
             jobId: job._id,
             title: job.title,
@@ -129,9 +151,9 @@ const JobProvider = ({ children }) => {
             location: job.location,
             company_logo: job.company_logo,
             userEmail: user.email
-        },)
+        })
             .then(() => {
-                fetchData()
+                fetchData();
                 Swal.fire({
                     position: 'top-center',
                     icon: 'success',
@@ -148,7 +170,7 @@ const JobProvider = ({ children }) => {
                     text: 'Failed to bookmark the job',
                 });
             });
-    }
+    };
 
     const value = {
         input,
@@ -161,9 +183,16 @@ const JobProvider = ({ children }) => {
         loadingData,
         setLoadingData,
         formHandler,
-        handleOnClick
-        , filterMode, discoverFilter, discoverJobHandler, roles, setFilterMode, setFilterKey, company, addtoBookMark, bookMark
-
+        handleOnClick,
+        filterMode,
+        discoverFilter,
+        discoverJobHandler,
+        roles,
+        setFilterMode,
+        setFilterKey,
+        company,
+        addtoBookMark,
+        bookMark
     };
 
     return (

@@ -20,6 +20,7 @@ const Findjob = () => {
         return () => clearTimeout(timer);
     }, [filterJobs, setLoadingData]);
 
+    // Create URLSearch params
     const handleLocationSelect = (city) => {
         setSearchParams(prevSearchParams => {
             const newSearchParams = new URLSearchParams(prevSearchParams);

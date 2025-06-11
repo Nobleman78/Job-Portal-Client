@@ -25,27 +25,27 @@ const MyProfile = () => {
                 {/* <div className="border-t border-dashed border-gray-400 my-4"></div> */}
                 <div className="bg-white shadow-xl rounded-xl p-6 w-full sm:w-80 max-w-sm mx-auto mt-10">
                     <nav className="space-y-4 text-gray-700 text-lg">
-                        <NavLink onClick={()=>scrollTo(0,0)} to='/myprofile/profile' className={({ isActive }) =>`flex items-center gap-4 p-3 rounded-lg hover:bg-blue-100 transition-all cursor-pointer ${isActive === true?'bg-blue-400 text-white':'bg-white'}`}>
-                            <FaUserCheck className="text-blue-600 text-xl" />
+                        <NavLink onClick={()=>scrollTo(0,0)} to='/myprofile/profile' className={({ isActive }) =>`flex items-center gap-4 p-3 rounded-lg hover:bg-blue-500 transition-all cursor-pointer ${isActive === true?'bg-blue-300 text-white':'bg-white'}`}>
+                            <FaUserCheck className="text-blue-600 text-xl " />
                             <span>My Profile</span>
                         </NavLink>
-                        <NavLink onClick={()=>scrollTo(0,0)} to='/myprofile/userinfo' className={({ isActive }) =>`flex items-center gap-4 p-3 rounded-lg hover:bg-blue-100 transition-all cursor-pointer ${isActive === true?'bg-blue-400 text-white':'bg-white'}`}>
+                        <NavLink onClick={()=>scrollTo(0,0)} to='/myprofile/userinfo' className={({ isActive }) =>`flex items-center gap-4 p-3 rounded-lg hover:bg-blue-500 transition-all cursor-pointer ${isActive === true?'bg-blue-300 text-white':'bg-white'}`}>
                             <CiCircleInfo className="text-blue-600 text-xl" />
                             <span>User Info</span>
                         </NavLink>
-                        <NavLink onClick={()=>scrollTo(0,0)} to='/myprofile/address' className={({ isActive }) =>`flex items-center gap-4 p-3 rounded-lg hover:bg-blue-100 transition-all cursor-pointer ${isActive === true?'bg-blue-400 text-white':'bg-white'}`}>
+                        <NavLink onClick={()=>scrollTo(0,0)} to='/myprofile/address' className={({ isActive }) =>`flex items-center gap-4 p-3 rounded-lg hover:bg-blue-500 transition-all cursor-pointer ${isActive === true?'bg-blue-300 text-white':'bg-white'}`}>
                             <CiLocationOn className="text-blue-600 text-xl" />
                             <span>Address</span>
                         </NavLink>
-                        <NavLink onClick={()=>scrollTo(0,0)} to='/myprofile/skills' className={({ isActive }) =>`flex items-center gap-4 p-3 rounded-lg hover:bg-blue-100 transition-all cursor-pointer ${isActive === true?'bg-blue-400 text-white':'bg-white'}`}>
+                        <NavLink onClick={()=>scrollTo(0,0)} to='/myprofile/skills' className={({ isActive }) =>`flex items-center gap-4 p-3 rounded-lg hover:bg-blue-500 transition-all cursor-pointer ${isActive === true?'bg-blue-300 text-white':'bg-white'}`}>
                             <MdOutlineLightbulb className="text-blue-600 text-xl" />
                             <span>Skills</span>
                         </NavLink>
-                        <NavLink onClick={()=>scrollTo(0,0)} to='/myprofile/jobexp' className={({ isActive }) =>`flex items-center gap-4 p-3 rounded-lg hover:bg-blue-100 transition-all cursor-pointer ${isActive === true?'bg-blue-400 text-white':'bg-white'}`}>
+                        <NavLink onClick={()=>scrollTo(0,0)} to='/myprofile/jobexp' className={({ isActive }) =>`flex items-center gap-4 p-3 rounded-lg hover:bg-blue-500 transition-all cursor-pointer ${isActive === true?'bg-blue-300 text-white':'bg-white'}`}>
                             <LuNotepadText className="text-blue-600 text-xl" />
                             <span>Job Experience</span>
                         </NavLink>
-                        <NavLink onClick={()=>scrollTo(0,0)} to='/myprofile/jobprofile' className={({ isActive }) =>`flex items-center gap-4 p-3 rounded-lg hover:bg-blue-100 transition-all cursor-pointer ${isActive === true?'bg-blue-400 text-white' :'bg-white'}`}>
+                        <NavLink onClick={()=>scrollTo(0,0)} to='/myprofile/jobprofile' className={({ isActive }) =>`flex items-center gap-4 p-3 rounded-lg hover:bg-blue-500 transition-all cursor-pointer ${isActive === true?'bg-blue-300 text-white':'bg-white'}`}>
                             <IoBagCheckOutline className="text-blue-600 text-xl" />
                             <span>Job Profile</span>
                         </NavLink>

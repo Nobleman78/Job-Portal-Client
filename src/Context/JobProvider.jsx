@@ -27,8 +27,8 @@ const JobProvider = ({ children }) => {
     useEffect(() => {
         axios.get('https://job-portal-server-zeta-one.vercel.app/jobs')
             .then(res => setJobs(res.data))
-        axios.get('http://localhost:3000/jobs')
-            .then(res => setJobs(res.data));
+        // axios.get('http://localhost:3000/jobs')
+        //     .then(res => setJobs(res.data));
     }, []);
 
     // Fetch all companies

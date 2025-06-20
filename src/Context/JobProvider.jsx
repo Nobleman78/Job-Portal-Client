@@ -33,22 +33,26 @@ const JobProvider = ({ children }) => {
 
     // Fetch all companies
     useEffect(() => {
-        axios.get('http://localhost:3000/companies')
+        axios.get('https://job-portal-server-zeta-one.vercel.app/companies')
             .then(res => setCompany(res.data));
+        // axios.get('http://localhost:3000/companies')
+        //     .then(res => setCompany(res.data));
     }, []);
 
     // Fetch role-based jobs
     useEffect(() => {
         axios.get('https://job-portal-server-zeta-one.vercel.app/rolebasedjob')
             .then(res => setRoles(res.data))
-        axios.get('http://localhost:3000/rolebasedjob')
-            .then(res => setRoles(res.data));
+        // axios.get('http://localhost:3000/rolebasedjob')
+        //     .then(res => setRoles(res.data));
     }, []);
 
     // Sponsor Company Jobs
     useEffect(() => {
-        axios.get('http://localhost:3000/sponsor-company-jobs')
+        axios.get('https://job-portal-server-zeta-one.vercel.app/sponsor-company-jobs')
             .then(res => setSponsorCompany(res.data))
+        // axios.get('http://localhost:3000/sponsor-company-jobs')
+        //     .then(res => setSponsorCompany(res.data))
     })
 
     // Handle form search
@@ -139,7 +143,7 @@ const JobProvider = ({ children }) => {
     }, [user?.email,]);
 
     const fetchData = () => {
-        axios.get(`http://localhost:3000/bookmarks?email=${user.email}`, { withCredentials: true })
+        axios.get(`https://job-portal-server-zeta-one.vercel.app/bookmarks?email=${user.email}`, { withCredentials: true })
             .then(res => setBookMark(res.data))
             .catch(err => console.error('Failed to fetch bookmarks:', err));
     };
@@ -166,7 +170,7 @@ const JobProvider = ({ children }) => {
             return;
         }
 
-        axios.post('http://localhost:3000/bookmarks', {
+        axios.post('https://job-portal-server-zeta-one.vercel.app/bookmarks', {
             jobId: job._id,
             title: job.title,
             salaryRange: job.salaryRange,

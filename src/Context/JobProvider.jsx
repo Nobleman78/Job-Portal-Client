@@ -25,7 +25,7 @@ const JobProvider = ({ children }) => {
 
     // Fetch all jobs
     useEffect(() => {
-        axios.get('https://job-portal-server-zeta-one.vercel.app/jobs')
+        axios.get('https://job-portal-server-blue-sigma.vercel.app/jobs')
             .then(res => setJobs(res.data))
         // axios.get('http://localhost:3000/jobs')
         //     .then(res => setJobs(res.data));
@@ -33,7 +33,7 @@ const JobProvider = ({ children }) => {
 
     // Fetch all companies
     useEffect(() => {
-        axios.get('https://job-portal-server-zeta-one.vercel.app/companies')
+        axios.get('https://job-portal-server-blue-sigma.vercel.app/companies')
             .then(res => setCompany(res.data));
         // axios.get('http://localhost:3000/companies')
         //     .then(res => setCompany(res.data));
@@ -41,7 +41,7 @@ const JobProvider = ({ children }) => {
 
     // Fetch role-based jobs
     useEffect(() => {
-        axios.get('https://job-portal-server-zeta-one.vercel.app/rolebasedjob')
+        axios.get('https://job-portal-server-blue-sigma.vercel.app/rolebasedjob')
             .then(res => setRoles(res.data))
         // axios.get('http://localhost:3000/rolebasedjob')
         //     .then(res => setRoles(res.data));
@@ -49,7 +49,7 @@ const JobProvider = ({ children }) => {
 
     // Sponsor Company Jobs
     useEffect(() => {
-        axios.get('https://job-portal-server-zeta-one.vercel.app/sponsor-company-jobs')
+        axios.get('https://job-portal-server-blue-sigma.vercel.app/sponsor-company-jobs')
             .then(res => setSponsorCompany(res.data))
         // axios.get('http://localhost:3000/sponsor-company-jobs')
         //     .then(res => setSponsorCompany(res.data))
@@ -143,7 +143,7 @@ const JobProvider = ({ children }) => {
     }, [user?.email,]);
 
     const fetchData = () => {
-        axios.get(`https://job-portal-server-zeta-one.vercel.app/bookmarks?email=${user.email}`, { withCredentials: true })
+        axios.get(`https://job-portal-server-blue-sigma.vercel.app/bookmarks?email=${user.email}`, { withCredentials: true })
             .then(res => setBookMark(res.data))
             .catch(err => console.error('Failed to fetch bookmarks:', err));
     };
@@ -170,7 +170,7 @@ const JobProvider = ({ children }) => {
             return;
         }
 
-        axios.post('https://job-portal-server-zeta-one.vercel.app/bookmarks', {
+        axios.post('https://job-portal-server-blue-sigma.vercel.app/bookmarks', {
             jobId: job._id,
             title: job.title,
             salaryRange: job.salaryRange,

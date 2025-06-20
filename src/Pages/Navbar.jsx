@@ -15,8 +15,7 @@ const Navbar = () => {
     const [menu, setMenu] = useState('menu');
     const [openProfile, setOpenProfile] = useState(false);
     const [open, setOpen] = useState(false);
-    const [isCompanyHoverd,setIsCompanyHoverd] = useState(false)
-    const [isServiceHoverd,setIsServiceHoverd] = useState(false)
+    const [isCompanyHoverd, setIsCompanyHoverd] = useState(false)
     const navigate = useNavigate()
 
 
@@ -43,7 +42,7 @@ const Navbar = () => {
                 </NavLink>
 
                 <div className="relative"
-                    >
+                >
                     <NavLink
                         to='/findjob'
                         className='flex flex-col items-center gap-1'
@@ -52,54 +51,14 @@ const Navbar = () => {
                         {/* <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' /> */}
                     </NavLink>
 
-                    {/* {isJobHovered && (
-                        <div className='absolute top-full left-1/2 w-max  transform -translate-x-1/2  bg-white rounded-xl  px-6 py-10 flex gap-10 z-50 '
-                            onMouseEnter={() => setIsJobHovered(true)}
-                            onMouseLeave={() => setIsJobHovered(false)}>
-                            <div>
-                                <h2 className='font-bold mb-3 text-lg text-blue-600'>Popular Categories</h2>
-                                <ul className='space-y-2 text-gray-700 '>
-                                    <li className='hover:text-blue-600 cursor-pointer'>IT Jobs</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Sales</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Marketing</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Data Science</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>HR</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Engineering</li>
-                                </ul>
-                            </div>
-                            <span className='w-0 h-50 border border-gray-400'></span>
-                            <div>
-                                <h2 className='font-bold mb-3 text-lg text-blue-600'>Jobs In Demand</h2>
-                                <ul className='space-y-2 text-gray-700'>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Freshers</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Remote</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Part Time</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Work From Home</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>MNC Jobs</li>
-                                </ul>
-                            </div>
-                            <span className='w-0 h-50 border border-gray-400'></span>
-                            <div>
-                                <h2 className='font-bold mb-3 text-lg text-blue-600'>Jobs By Location</h2>
-                                <ul className='space-y-2 text-gray-700'>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Dhaka</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Chittagong</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Khulna</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Sylet</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Cumilla</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Barisal</li>
-                                </ul>
-                            </div>
-                        </div>
-                    )} */}
                 </div>
-               <div className="relative"
+                <div className="relative"
                     onMouseEnter={() => setIsCompanyHoverd(true)}
                     onMouseLeave={() => setIsCompanyHoverd(false)}>
                     <NavLink
                         to='/companies'
                         className='flex flex-col items-center gap-1'
-                        onClick={() => {scrollTo(0, 0),setIsCompanyHoverd(false)}}>
+                        onClick={() => { scrollTo(0, 0), setIsCompanyHoverd(false) }}>
                         <p>COMPANY</p>
                         {/* <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' /> */}
                     </NavLink>
@@ -145,58 +104,12 @@ const Navbar = () => {
                         </div>
                     )}
                 </div>
-                <div className="relative"
-                    onMouseEnter={() => setIsServiceHoverd(true)}
-                    onMouseLeave={() => setIsServiceHoverd(false)}>
-                    <NavLink
-                        to='/services'
-                        className='flex flex-col items-center gap-1'
-                        onClick={() => {scrollTo(0, 0),setIsServiceHoverd(false)}}>
-                        <p>SERVICES</p>
-                        {/* <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' /> */}
-                    </NavLink>
 
-                    {isServiceHoverd && (
-                        <div className='absolute top-full left-1/2 w-max  transform -translate-x-1/2  bg-white rounded-xl  px-6 py-10 flex gap-10 z-50 '
-                            onMouseEnter={() => setIsServiceHoverd(true)}
-                            onMouseLeave={() => setIsServiceHoverd(false)}>
-                            <div>
-                                <h2 className='font-bold mb-3 text-lg text-blue-600'>Get Reqrutier Attention</h2>
-                                <ul className='space-y-2 text-gray-700 '>
-                                    <li className='hover:text-blue-600 cursor-pointer'>IT Jobs</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Sales</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Marketing</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Data Science</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>HR</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Engineering</li>
-                                </ul>
-                            </div>
-                            <span className='w-0 h-50 border border-gray-400'></span>
-                            <div>
-                                <h2 className='font-bold mb-3 text-lg text-blue-600'>Resume Writting</h2>
-                                <ul className='space-y-2 text-gray-700'>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Freshers</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Remote</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Part Time</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Work From Home</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>MNC Jobs</li>
-                                </ul>
-                            </div>
-                            <span className='w-0 h-50 border border-gray-400'></span>
-                            <div>
-                                <h2 className='font-bold mb-3 text-lg text-blue-600'>Find Jobs</h2>
-                                <ul className='space-y-2 text-gray-700'>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Dhaka</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Chittagong</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Khulna</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Sylet</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Cumilla</li>
-                                    <li className='hover:text-blue-600 cursor-pointer'>Barisal</li>
-                                </ul>
-                            </div>
-                        </div>
-                    )}
-                </div>
+                <NavLink to='/services'className='flex flex-col items-center gap-1'>
+                    <p>GET SUPPORT</p>
+                    {/* <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' /> */}
+                </NavLink>
+
                 <NavLink onClick={() => scrollTo(0, 0)} to='/dashboard' className='flex flex-col items-center gap-1'>
                     <p>DASHBOARD</p>
                     {/* <hr className='w-2/4 border-none h-[1.5px] hidden bg-gray-700' /> */}
@@ -222,13 +135,13 @@ const Navbar = () => {
                     showUserInfo && openProfile &&
                     <div className='w-60 h-auto shadow-xl absolute bg-white top-10 right-0 border-t-4 border-green-600 z-20 rounded-b'>
                         <ul className='flex flex-col items-start px-5 gap-4 py-4 cursor-pointer'>
-                            <li onClick={() => {setOpenProfile(false),navigate('/myprofile/profile'),scrollTo(0,0)}} className='flex items-center gap-3 w-full hover:text-blue-600'>
+                            <li onClick={() => { setOpenProfile(false), navigate('/myprofile/profile'), scrollTo(0, 0) }} className='flex items-center gap-3 w-full hover:text-blue-600'>
                                 <FaUser /> My Profile
                             </li>
                             <li onClick={() => setOpenProfile(false)} className='flex items-center gap-3 w-full hover:text-blue-600'>
                                 <MdModeEditOutline /> Edit Profile
                             </li>
-                            <li onClick={() => {setOpenProfile(false),navigate('/mybookmark'),scrollTo(0,0)}} className='flex items-center gap-3 w-full hover:text-blue-600'>
+                            <li onClick={() => { setOpenProfile(false), navigate('/mybookmark'), scrollTo(0, 0) }} className='flex items-center gap-3 w-full hover:text-blue-600'>
                                 <IoBookmarksSharp /> My BookMarks
                             </li>
                             <li

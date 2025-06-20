@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import JobContext from './Jobcontext';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -15,6 +15,7 @@ const JobProvider = ({ children }) => {
     const [roles, setRoles] = useState([]);
     const [loadingData, setLoadingData] = useState(true);
     const [company, setCompany] = useState([]);
+    const [spornsorCompany, setSponsorCompany] = useState([])
     const [filterKey, setFilterKey] = useState('');
     const [filterMode, setFilterMode] = useState(null);
     const { user } = useContext(AuthContext);
@@ -24,6 +25,8 @@ const JobProvider = ({ children }) => {
 
     // Fetch all jobs
     useEffect(() => {
+        axios.get('https://job-portal-server-zeta-one.vercel.app/jobs')
+            .then(res => setJobs(res.data))
         axios.get('http://localhost:3000/jobs')
             .then(res => setJobs(res.data));
     }, []);
@@ -36,9 +39,17 @@ const JobProvider = ({ children }) => {
 
     // Fetch role-based jobs
     useEffect(() => {
+        axios.get('https://job-portal-server-zeta-one.vercel.app/rolebasedjob')
+            .then(res => setRoles(res.data))
         axios.get('http://localhost:3000/rolebasedjob')
             .then(res => setRoles(res.data));
     }, []);
+
+    // Sponsor Company Jobs
+    useEffect(() => {
+        axios.get('http://localhost:3000/sponsor-company-jobs')
+            .then(res => setSponsorCompany(res.data))
+    })
 
     // Handle form search
     const formHandler = (e) => {
@@ -125,7 +136,7 @@ const JobProvider = ({ children }) => {
         if (user?.email) {
             fetchData();
         }
-    }, [user?.email]);
+    }, [user?.email,]);
 
     const fetchData = () => {
         axios.get(`http://localhost:3000/bookmarks?email=${user.email}`, { withCredentials: true })
@@ -203,7 +214,8 @@ const JobProvider = ({ children }) => {
         setFilterKey,
         company,
         addtoBookMark,
-        bookMark
+        bookMark,
+        spornsorCompany
     };
 
     return (

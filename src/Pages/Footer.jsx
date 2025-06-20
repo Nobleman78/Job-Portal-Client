@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { FaLinkedin } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -18,11 +19,10 @@ const Footer = () => {
                     <div>
                         <h2 className='font-semibold lg:text-xl'>For Candidates</h2>
                         <ul className='text-gray-600 flex flex-col cursor-pointer gap-4 mt-5'>
-                            <li>Browse Job</li>
-                            <li>Browse Categories</li>
-                            <li>Candidates Dashboard</li>
-                            <li>Job Alert</li>
-                            <li>My Bookmarks</li>
+                            <Link to='/findjob'> <li onClick={() => scrollTo(0, 0)}>Browse Job</li></Link>
+                            <a href="#category">Browse Category</a>
+                            <Link to='/dashboard'><li onClick={() => scrollTo(0, 0)}>Candidates Dashboard</li></Link>
+                            <Link to='/mybookmark'><li onClick={() => scrollTo(0, 0)}>My Bookmarks</li></Link>
                         </ul>
 
                     </div>
@@ -39,9 +39,9 @@ const Footer = () => {
                     <div>
                         <h2 className='font-semibold  lg:text-xl'>About Us</h2>
                         <ul className='text-gray-600 cursor-pointer flex flex-col gap-4 mt-5'>
-                            <li>About Us</li>
+                           <Link to='/about'> <li onClick={()=>scrollTo(0,0)}>About Us</li></Link>
                             <li>Blog</li>
-                            <li>Contact</li>
+                           <Link to='/'> <li>Contact</li></Link>
                             <li>Terms Page</li>
 
                         </ul>

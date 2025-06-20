@@ -1,111 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import JobContext from '../../Context/Jobcontext';
 
 const SponsorCompany = () => {
-    const services = ['All', 'IT Services', 'Technology', 'Healthcare & Life Scenerios', 'Manufacturaing & Production'];
-
-    const companies = [
-        {
-            name: 'HasheDln',
-            image: 'https://img.naukimg.com/logo_images/groups/v1/2872024.gif',
-            star: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
-            numberOfReviewsStar: 4.2,
-            numberOfReviews: 453,
-            productCategory: 'IT Services',
-            serviceProvide: 'Hardware and Networking'
-
-        },
-        {
-            name: 'Xoriant',
-            image: 'https://img.naukimg.com/logo_images/groups/v1/2436002.gif',
-            star: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
-            numberOfReviewsStar: 3.2,
-            numberOfReviews: 393,
-            productCategory: 'Technology',
-            serviceProvide: 'B2B'
-
-
-        },
-        {
-            name: 'Dalmia Cement',
-            image: 'https://img.naukimg.com/logo_images/groups/v1/4695551.gif',
-            star: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
-            numberOfReviewsStar: 4.3,
-            numberOfReviews: 493,
-            productCategory: 'Manufacturaing ',
-            serviceProvide: 'Engineering and Construction'
-        },
-
-        {
-            name: 'ALTEN',
-            image: 'https://img.naukimg.com/logo_images/groups/v1/4576305.gif',
-            star: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
-            numberOfReviewsStar: 3.8,
-            numberOfReviews: 43,
-            productCategory: 'IT Service and Consulting',
-            serviceProvide: 'Private'
-        },
-        {
-            name: 'Cardinal Health',
-            image: 'https://img.naukimg.com/logo_images/groups/v1/4673837.gif',
-            star: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
-            numberOfReviewsStar: 4.0,
-            numberOfReviews: 43,
-            productCategory: 'Healthcare',
-            serviceProvide: 'Pharmaseuticals and Life Services'
-        },
-        {
-            name: 'Thermo Fisher Scientific',
-            image: 'https://img.naukimg.com/logo_images/groups/v1/526200.gif',
-            star: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
-            numberOfReviewsStar: 4.5,
-            numberOfReviews: 103,
-            productCategory: 'Healthcare',
-            serviceProvide: 'Biotech and Life sciences'
-        },
-        {
-            name: 'Cencora',
-            image: 'https://img.naukimg.com/logo_images/groups/v1/9901246.gif',
-            star: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
-            numberOfReviewsStar: 4.5,
-            numberOfReviews: 103,
-            productCategory: 'Healthcare',
-            serviceProvide: 'Healthcare Industry'
-        },
-        {
-            name: 'Sadguru Healthcare',
-            image: 'https://img.naukimg.com/logo_images/groups/v1/8165687.gif',
-            star: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
-            numberOfReviewsStar: 3.8,
-            numberOfReviews: 103,
-            productCategory: 'Healthcare',
-            serviceProvide: 'Corporate'
-        },
-        {
-            name: 'Tata Auto',
-            image: 'https://img.naukimg.com/logo_images/groups/v1/5114.gif',
-            star: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
-            numberOfReviewsStar: 3.8,
-            numberOfReviews: 103,
-            productCategory: 'Manufacturaing',
-            serviceProvide: 'Auto Mobile Company'
-        },
-        {
-            name: 'O9 Solutions',
-            image: 'https://img.naukimg.com/logo_images/groups/v1/4687693.gif',
-            star: 'https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg',
-            numberOfReviewsStar: 3.8,
-            numberOfReviews: 103,
-            productCategory: 'Technology',
-            serviceProvide: 'Internet'
-        },
-
-    ]
+    const services = ['All', 'IT Services', 'Technology', 'Healthcare & Life Scenerios', 'Manufacturing '];
+    const {spornsorCompany} = useContext(JobContext)
+   
     const [activeService, setActiveService] = useState('All');
     const filteredCompanies =
-        activeService === 'All' ? companies
-            : companies.filter(company => {
+        activeService === 'All' ? spornsorCompany
+            : spornsorCompany.filter(company => {
                 const activeServiceLower = activeService.toLowerCase();
                 const categoryWords = company.productCategory.toLowerCase().split(/\s+/);
+                
                 return activeServiceLower.split(/\s+/).some(word => categoryWords.includes(word)
 
                 );

@@ -27,6 +27,8 @@ import Address from './components/ProfileInfo/Address'
 import Skills from './components/ProfileInfo/Skills'
 import JobExp from './components/ProfileInfo/JobExp'
 import DiscoverjobDetailes from './components/DisCoverJobs/DiscoverjobDetailes'
+import ScrollToTop from './Pages/ScrollToTop'
+import About from './components/FooterPage/About'
 
 function App() {
   return (
@@ -44,8 +46,6 @@ function App() {
           <Route path='/myprofile/jobexp' element={<JobExp />}></Route>
         </Route>
         <Route path='/mybookmark' element={<Bookmarks />}></Route>
-
-
         <Route path='/' element={<Home />}></Route>
         <Route path='/jobs/:id' element={<JobDetailes />}></Route>
         <Route path='/login' element={<Login />}></Route>
@@ -64,10 +64,10 @@ function App() {
         <Route path='/applyJob/:id' element={<ApplyJob />}></Route>
         <Route path='/featurescompanydetails/:title' element={<FeatureCompanyDetails />}></Route>
         <Route path='/discoverjobdetails/:category' element={<DiscoverjobDetailes />}></Route>
-
-
+        <Route path='/about' element={<About />}></Route>
       </Routes>
       <Footer />
+      <ScrollToTop />
     </div>
   )
 }

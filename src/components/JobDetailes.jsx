@@ -56,11 +56,17 @@ const JobDetails = () => {
                                 </div>
                                 <div>
                                     <p className="text-gray-700 font-medium">Requirements:</p>
-                                    <p className="text-gray-600">{job.requirements}</p>
+                                    <p className="text-gray-600">{job.requirements.map((req,index)=>(
+                                        <li key={index}>
+                                            {req}
+                                        </li>
+                                    ))}</p>
                                 </div>
                                 <div>
                                     <p className="text-gray-700 font-medium">Responsibilities:</p>
-                                    <p className="text-gray-600">{job.responsibilities}</p>
+                                    <p className="text-gray-600">{job.responsibilities.map((res,index)=>(
+                                        <li key={index}>{res}</li>
+                                    ))}</p>
                                 </div>
                             </div>
                         )}
